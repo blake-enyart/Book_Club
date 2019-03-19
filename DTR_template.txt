@@ -26,18 +26,34 @@ Communication Expectations (How and often will we communicate? How do we keep li
 
   Communication in person for serious things. (over video chat is fine)
 
-  We'll keep each other informed on any problems may arise to make sure that there aren't any problems that build up.
-
-Abilities & Growth Expectations (Technical strengths and areas for desired improvement):
+  We'll keep each other informed on any problems that may arise to make sure that there aren't any problems that build up.
 
 Workload Expectations (What features do we each want to work on?):
 
+  Wait on this..
+
 Workflow Expectations (Git workflow/Tools/Code Review/Reviewing Pull Requests/Debugging and Problem-solving Techniques):
+
+  1) Added security to Git workflow to make sure that we are requiring a review.
+  2) We have set up the process to review each pull request.
+  3) We will never work on the same branch as our partner and we will have distinct responsibities hopefully.
+  4) Waffle will be automated hopefully through commit and pull git automation.  If not we will manually change Waffle.
 
 Expectations for giving and receiving feedback:
 
+By Friday, we'll have the 4 L's discussion.  Liked, Learned, Lacked, Longed For
+
+Review on March 22nd
+
 Project management tools we will use:
 
+Github
+Waffle
+Slack
+
+
 Day 1 Agenda:
+
+We'll look over the project and take it one day at a time.
 
 Additional Notes:
