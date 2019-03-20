@@ -7,7 +7,6 @@ RSpec.describe 'when visitor visits home page they see a navigation bar' do
   it 'can see link to return to homepage' do
     visit '/books'
     within ".topnav" do
-      # save_and_open_page
       click_on("Home")
       expect(current_path).to eq('/')
     end
@@ -21,12 +20,3 @@ RSpec.describe 'when visitor visits home page they see a navigation bar' do
     end
   end
 end
-
-# User Story 2
-# Visitor Navigation
-#
-# As a visitor
-# I see a navigation bar
-# This navigation bar includes links for the following:
-# - a link to return to the welcome / home page of the application ("/")
-# - a link to browse all books ("/books")
