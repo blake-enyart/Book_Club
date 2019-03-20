@@ -10,6 +10,61 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
- *= require_tree .
- *= require_self
+ = require_tree .
+ = require_self
  */
+
+
+ *
+{
+  margin: 0;
+  padding: 0;
+
+}
+
+body {
+  background-color: #E8E8E8;
+  margin: 0px;
+}
+
+header {
+  background-color:  #282828;
+  padding-right: 20px;
+  padding-left: 20px;
+  padding-bottom: 20px;
+}
+
+
+h1 {
+  font-size: 2rem;
+  color: 	#0099ff;
+  font-family: 'Muli', sans-serif;
+}
+
+
+
+.topnav {
+  padding-top: 40px;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 40%;
+
+}
+
+.topnav a {
+  color: gray;
+  text-decoration: none;
+  font-family: 'Muli', sans-serif;
+  margin-left: 0.5rem;
+  margin-right: 0.5rem;
+  width: 50%;
+}
+
+.title {
+  float: right;
+  font-family: 'Lobster';
+  color: #A9A9A9;
+  font-size: 3rem;
+  width: 20%;
+  top-margin: 0px;
+}
