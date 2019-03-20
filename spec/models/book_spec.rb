@@ -10,5 +10,7 @@ describe Book, type: :model do
 
   describe 'relationships' do
     it { should have_many :reviews }
+    it { should have_many :authors_books }
+    it { should have_many(:authors).through(:authors_books) }
   end
 end

@@ -1,5 +1,5 @@
 class Review < ApplicationRecord
   belongs_to :book
-  
-  validates_presence_of :title, :rating, :text
+
+  validates_presence_of :title, :rating, :text, :username
 end

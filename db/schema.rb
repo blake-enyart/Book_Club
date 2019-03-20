@@ -39,6 +39,7 @@ ActiveRecord::Schema.define(version: 20190319171004) do
     t.string "title"
     t.integer "rating"
     t.string "text"
+    t.string "username"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "book_id"
