@@ -1,0 +1,22 @@
+<section class='main'>
+  <h1><% @book.title %></h1>
+  <section class='book-card' id=<%= @book.id %>>
+    <li><%= link_to @book.title, book_path(@book) %></li>
+    <li>Number of Pages: <%= @book.number_of_pages %></li>
+    <li>Author(s):
+    <% @book.authors.each do |author| %>
+      <%= link_to(author.name, author_path(author))%>
+    <% end %>
+    </li>
+    <li>Year Published: <%= @book.year_published %></li>
+  </section>
+  <div class='book-review-description'>
+    <% @book.reviews.each do |review| %>
+      <li>Title: <%= review.title %></li>
+      <li>Username: <%= review.username %></li>
+      <li>Rating: <%= review.rating %></li>
+      <div class='book-review-card'>
+        <li>Description: <%= review.text %></li>
+      </div>
+    <% end %>
+  </div>
