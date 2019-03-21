@@ -6,12 +6,11 @@
     <section class='book-card' id=<%= book.id %>>
       <h2><%= link_to book.title, book_path(book) %></h2>
       <p>Number of Pages: <%= book.number_of_pages %></p>
-      <% authors = [] %>
+      <p>Author(s):
       <% book.authors.each do |author| %>
-        <% authors << author.name %>
+        <%= link_to(author.name, author_path(author))%>
       <% end %>
-      <% authors = authors.join(', ') %>
-      <p>Author(s): <%= authors %></p>
+      </p>
       <p>Year Published: <%= book.year_published %></p>
     </section>
     <% end %>
