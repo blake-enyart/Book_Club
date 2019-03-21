@@ -23,7 +23,7 @@ RSpec.describe "user sees all books", type: :feature do
       within "\##{book_2.id}" do
         expect(page).to have_link(book_2.title)
         expect(page).to have_content("Number of Pages: #{book_2.number_of_pages}")
-        expect(page).to have_content("Author(s): John Steinbeck, Other Guy")
+        expect(page).to have_content("Author(s): John Steinbeck Other Guy")
         expect(page).to have_link("John Steinbeck")
         expect(page).to have_link("Other Guy")
         expect(page).to have_content("Year Published: #{book_2.year_published}")
