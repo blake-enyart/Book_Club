@@ -1,24 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <title>BookClub</title>
-  <%= csrf_meta_tags %>
-  <link rel="stylesheet" href="./public/styles.css" title="text/css" />
-</head>
-  <body>
-    <header>
-      <ul class="topnav">
-        <a id="home" href="/" class="menu">Home</a>
-        <a id="books" href="/books" class="menu">Books</a>
-      </ul>
-      <div class="title">Book Club</div>
-    </header>
-    <section class='main'>
-      <h1>All Books</h1>
-      <% @books.each do |book| %>
-        <h2><%= book.title %></h2>
-        <p>Number of Pages: <%= book.number_of_pages %></p>
-      <% end %>
-    </section>
-  </body>
-</html>
+<section class='main'>
+  <h1>All Books</h1>
+  <% @books.each do |book| %>
+    <h2><%= book.title %></h2>
+    <p>Number of Pages: <%= book.number_of_pages %></p>
+  <% end %>
+</section>
