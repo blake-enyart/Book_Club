@@ -1,0 +1,37 @@
+id,book_title,user_name,title,rating,text
+1,Where the Crawdads Sing,user_1,title_1,1,user_review_body_1
+2,Where the Crawdads Sing,user_2,title_2,2,user_review_body_2
+3,Where the Crawdads Sing,user_3,title_3,3,user_review_body_3
+4,East of Eden,user_1,title_4,4,user_review_body_4
+5,East of Eden,user_2,title_5,5,user_review_body_5
+6,East of Eden,user_3,title_6,1,user_review_body_6
+7,What the Dog Saw: And Other Adventures,user_1,title_7,2,user_review_body_7
+8,What the Dog Saw: And Other Adventures,user_2,title_8,3,user_review_body_8
+9,What the Dog Saw: And Other Adventures,user_3,title_9,4,user_review_body_9
+10,Cannery Row,user_1,title_10,5,user_review_body_10
+11,Cannery Row,user_2,title_11,1,user_review_body_11
+12,Cannery Row,user_3,title_12,2,user_review_body_12
+13,Blink,user_1,title_13,3,user_review_body_13
+14,Blink,user_2,title_14,4,user_review_body_14
+15,Blink,user_3,title_15,5,user_review_body_15
+16,Outliers: The Story of Success,user_1,title_16,1,user_review_body_16
+17,Outliers: The Story of Success,user_2,title_17,2,user_review_body_17
+18,Outliers: The Story of Success,user_3,title_18,3,user_review_body_18
+19,"Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",user_1,title_19,4,user_review_body_19
+20,"Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",user_2,title_20,5,user_review_body_20
+21,"Good Omens: The Nice and Accurate Prophecies of Agnes Nutter, Witch",user_3,title_21,1,user_review_body_21
+22,The Talisman,user_1,title_22,2,user_review_body_22
+23,The Talisman,user_2,title_23,3,user_review_body_23
+24,The Talisman,user_3,title_24,4,user_review_body_24
+25,The Grapes of Wrath,user_1,title_25,5,user_review_body_25
+26,The Grapes of Wrath,user_2,title_26,1,user_review_body_26
+27,The Grapes of Wrath,user_3,title_27,2,user_review_body_27
+28,Of Mice and Men,user_1,title_28,3,user_review_body_28
+29,Of Mice and Men,user_2,title_29,4,user_review_body_29
+30,Of Mice and Men,user_3,title_30,5,user_review_body_30
+31,The Pearl,user_1,title_31,1,user_review_body_31
+32,The Pearl,user_2,title_32,2,user_review_body_32
+33,The Pearl,user_3,title_33,3,user_review_body_33
+34,Tortilla Flats,user_1,title_34,4,user_review_body_34
+35,Tortilla Flats,user_2,title_35,5,user_review_body_35
+36,Tortilla Flats,user_3,title_36,1,user_review_body_36

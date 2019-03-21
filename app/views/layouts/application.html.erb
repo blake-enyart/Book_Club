@@ -9,6 +9,15 @@
   </head>
 
   <body>
+    <header>
+      <ul class="top-nav">
+        <%= link_to 'Home', root_path %>
+        <%= link_to 'Books', books_path %>
+      </ul>
+      <div class="title">Book Club</div>
+    </header>
+
     <%= yield %>
+
   </body>
 </html>

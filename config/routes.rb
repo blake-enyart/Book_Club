@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
-  root to: 'pages#home'
+  root 'pages#home'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :books, only:[:index]
+  resources :books, only:[:index, :show]
 
 end
