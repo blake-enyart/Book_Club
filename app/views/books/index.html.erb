@@ -1,10 +1,18 @@
 <section class='main'>
   <h1>All Books</h1>
+
   <section class='book-ctn'>
     <% @books.each do |book| %>
     <section class='book-card' id=<%= book.id %>>
-      <h2><%= book.title %></h2>
+      <h2><%= link_to book.title, book_path(book) %></h2>
       <p>Number of Pages: <%= book.number_of_pages %></p>
+      <% authors = [] %>
+      <% book.authors.each do |author| %>
+        <% authors << author.name %>
+      <% end %>
+      <% authors = authors.join(', ') %>
+      <p>Author(s): <%= authors %></p>
+      <p>Year Published: <%= book.year_published %></p>
     </section>
     <% end %>
   </section>
