@@ -32,6 +32,6 @@ id,book_title,user_name,title,rating,text
 31,The Pearl,user_1,title_31,1,user_review_body_31
 32,The Pearl,user_2,title_32,2,user_review_body_32
 33,The Pearl,user_3,title_33,3,user_review_body_33
-34,Tortilla Flats,user_1,title_34,4,user_review_body_34
-35,Tortilla Flats,user_2,title_35,5,user_review_body_35
-36,Tortilla Flats,user_3,title_36,1,user_review_body_36
+34,Tortilla Flat,user_1,title_34,4,user_review_body_34
+35,Tortilla Flat,user_2,title_35,5,user_review_body_35
+36,Tortilla Flat,user_3,title_36,1,user_review_body_36
