@@ -18,6 +18,7 @@ RSpec.describe "user sees all books", type: :feature do
         expect(page).to have_content("Author(s): Delia Owens")
         expect(page).to have_link("Delia Owens")
         expect(page).to have_content("Year Published: #{book_1.year_published}")
+        expect(page).to have_xpath("//img[@src='#{book_1.book_cover_url}']")
       end
 
       within "\##{book_2.id}" do
@@ -27,6 +28,8 @@ RSpec.describe "user sees all books", type: :feature do
         expect(page).to have_link("John Steinbeck")
         expect(page).to have_link("Other Guy")
         expect(page).to have_content("Year Published: #{book_2.year_published}")
+        expect(page).to have_xpath("//img[@src='#{book_2.book_cover_url}']")
+
       end
     end
   end
