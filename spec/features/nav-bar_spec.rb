@@ -1,22 +1,20 @@
-require 'pry'
 require 'rails_helper'
 
-RSpec.describe 'when visitor visits home page they see a navigation bar' do
+RSpec.describe 'user sees links on every page' do
+  describe 'user visits /' do
+    it 'can see navigation links' do
 
+      visit root_path
 
-  it 'can see link to return to homepage' do
-    visit '/books'
-    within ".topnav" do
-      click_on("Home")
-      expect(current_path).to eq('/')
-    end
-  end
+      within ".top-nav" do
+        click_link("Home")
+        expect(current_path).to eq(root_path)
+      end
 
-  it 'can see link to go to books page' do
-    visit '/'
-    within ".topnav" do
-      click_on("Books")
-      expect(current_path).to eq('/books')
+      within ".top-nav" do
+        click_link("Books")
+        expect(current_path).to eq(books_path)
+      end
     end
   end
 end

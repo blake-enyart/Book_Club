@@ -1,7 +1,11 @@
 <section class='main'>
   <h1>All Books</h1>
-  <% @books.each do |book| %>
-    <h2><%= book.title %></h2>
-    <p>Number of Pages: <%= book.number_of_pages %></p>
-  <% end %>
+  <section class='book-ctn'>
+    <% @books.each do |book| %>
+    <section class='book-card' id=<%= book.id %>>
+      <h2><%= book.title %></h2>
+      <p>Number of Pages: <%= book.number_of_pages %></p>
+    </section>
+    <% end %>
+  </section>
 </section>
