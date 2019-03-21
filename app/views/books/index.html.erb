@@ -5,6 +5,7 @@
     <% @books.each do |book| %>
     <section class='book-card' id=<%= book.id %>>
       <h2><%= link_to book.title, book_path(book) %></h2>
+      <img src="<%= book.book_cover_url %>" alt="book cover image">
       <p>Number of Pages: <%= book.number_of_pages %></p>
       <p>Author(s):
       <% book.authors.each do |author| %>
