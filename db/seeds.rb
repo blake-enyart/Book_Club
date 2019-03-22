@@ -11,6 +11,8 @@ require './app/models/book'
 Author.destroy_all
 Review.destroy_all
 Book.destroy_all
+Author.destroy_all
+Review.destroy_all
 
 file_path = './db/data/books.csv'
 file = File.open(file_path)
