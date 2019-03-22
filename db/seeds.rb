@@ -8,6 +8,8 @@
 
 require './app/models/book'
 
+Author.destroy_all
+Review.destroy_all
 Book.destroy_all
 
 file_path = './db/data/books.csv'
