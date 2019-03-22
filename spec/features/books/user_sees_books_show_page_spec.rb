@@ -25,6 +25,49 @@ RSpec.describe "user sees all books", type: :feature do
       end
     end
   end
+
+  describe 'user visits /books/1' do
+    it "displays book review statistics" do
+
+
+      book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
+      review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
+      review_2 = book_1.reviews.create(title: "What a delightfully dreary book", username: "mums58", rating: 3, text: "It was just dreary.")
+      review_3 = book_1.reviews.create(title: "Something to read for sure", username: "llamamama4", rating: 4, text: "I'm super happey about this book.")
+      review_4 = book_1.reviews.create(title: "FOR THE LOVE OF GOD", username: "banquet1", rating: 2, text: "FOR THE LOVE OF GOD")
+      review_5 = book_1.reviews.create(title: "OK", username: "matey1", rating: 3, text: "OK")
+
+      visit book_path(book_1)
+
+      within '.book-review-statistics-top' do
+        expect(page).to have_content(review_2.title)
+        expect(page).to have_content(review_3.title)
+        expect(page).to have_content(review_5.title)
+      end
+
+      within '.book-review-statistics-top' do
+        expect(page).not_to have_content(review_1.title)
+        expect(page).not_to have_content(review_4.title)
+      end
+    end
+  end
+
+  describe 'user visits /books/1' do
+    it "displays book review statistics" do
+
+
+      book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
+      review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
+
+      visit book_path(book_1)
+
+      within '.book-review-statistics-top' do
+        expect(page).to have_content(review_1.title)
+        expect(page).to have_content(review_1.rating)
+        expect(page).to have_content(review_1.username)
+      end
+    end
+  end
 end
 
 # create_table "reviews", force: :cascade do |t|
@@ -37,17 +80,9 @@ end
 #   t.bigint "book_id"
 #   t.index ["book_id"], name: "index_reviews_on_book_id"
 # end
-
 # As a Visitor,
 # When I visit a book's show page,
-# I see the following book information:
-# - the book title
-# - the author(s) who wrote the book
-# - the number of pages in the book
-# - the year the book was published
-# - a large image of the book cover
-#
-# I also see a list of reviews for that book.
-# Each review will have a title and user, a numeric rating
-# from 1 to 5, and text for the review itself, and all content
-# must be present for each review.
+# I see an area on the page for statistics about reviews:
+# - the top three reviews for this book (title, rating and user only)
+# - the bottom three reviews for this book  (title, rating and user only)
+# - the overall average rating of all reviews for this book
