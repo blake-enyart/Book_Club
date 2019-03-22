@@ -11,7 +11,6 @@ class Book < ApplicationRecord
   end
 
   def top_three_reviews
-    binding.pry
     self.reviews.order(:rating).reverse.first(3)
   end
 
