@@ -67,6 +67,18 @@ describe Book, type: :model do
       expect(expected).to eq([@book_1, @book_3, @book_2])
     end
 
+    it '.bottom_books' do
+      expected = Book.bottom_books(1)
+
+      expect(expected.length).to eq(1)
+      expect(expected).to eq([@book_4])
+
+      expected = Book.bottom_books(3)
+
+      expect(expected.length).to eq(3)
+      expect(expected).to eq([@book_4, @book_2, @book_3])
+    end
+
   end
   describe 'top_3_statistics' do
     before :each do
