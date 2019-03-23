@@ -64,6 +64,10 @@ RSpec.describe "book index workflow", type: :feature do
           within('#top-books') do
             expect(page).to have_content("#{@book_1.title} #{@book_3.title} #{@book_2.title}")
           end
+
+          within('#btm-books') do
+            expect(page).to have_content("#{@book_4.title} #{@book_3.title} #{@book_2.title}")
+          end
         end
       end
     end
