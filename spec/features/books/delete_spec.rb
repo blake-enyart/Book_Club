@@ -8,6 +8,7 @@ RSpec.describe 'Delete book workflow' do
       review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
 
       visit book_path(book_1)
+      within 'body'
 
       click_on 'delete_book'
 

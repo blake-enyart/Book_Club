@@ -1,6 +1,6 @@
 
 
-<% link_to 'delete_book', books_path(@book), method: :delete %>
+<%= link_to 'delete_book', book_path(@book), method: :delete %>
 
 <div class='book-review-statistics-top' id=<%= @book.id %>>
   <% @book.top_three_reviews.each do |review| %>
