@@ -5,9 +5,10 @@ RSpec.describe "user sees all books", type: :feature do
     it 'user adds new book' do
       book_name = 'Sphere'
 
-      # visit index_path
-      # click_link
-      visit new_book_path
+      visit root_path
+      within 'top-nav'
+      click_link 'New_Book'
+
 
       fill_in 'book[title]', with: 'Sphere'
       fill_in 'book[year_published]', with: 1988
