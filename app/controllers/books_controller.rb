@@ -7,11 +7,18 @@ class BooksController < ApplicationController
   def create
     author_names = params[:authors].split(',')
     book = Book.create(book_params)
-    if Book.already_exists?(book)
-      redirect_to new_book_path
-    else
+    # if Book.already_exists?(book)
+    #   redirect_to new_book_path
+    # else
+    book.save
+    assign_book_to_author(author_names, book)
+    redirect_to book_path(book[:id])
+  end
 
-
+  def assign_book_to_author(author_names, book)
+    author_names.each do |name|
+      author = Author.find_or_create_by(name: name.strip)
+      author.books << book
     end
   end
 
@@ -29,8 +36,6 @@ class BooksController < ApplicationController
   private
 
   def book_params
-
     params.require(:book).permit(:title, :year_published, :number_of_pages, :book_cover_url, :authors)
-    params[:book][:authors] = params[:book][:authors].split(',')
   end
 end

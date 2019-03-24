@@ -5,20 +5,26 @@ RSpec.describe "user sees all books", type: :feature do
     it 'user adds new book' do
       book_name = 'Sphere'
 
+      # visit index_path
+      # click_link
       visit new_book_path
 
       fill_in 'book[title]', with: 'Sphere'
       fill_in 'book[year_published]', with: 1988
       fill_in 'book[number_of_pages]', with: 345
       fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
-      fill_in 'authors', with: "Michael Crichton"
+      #add test to add multiple authors
+      fill_in 'authors', with: 'Michael Crichton'
 
       click_button 'Create Book'
 
-      book = Book.last
-      expect(current_path).to eq(book_path(book))
-      expect(new_book.book).to eq(book)
+      new_book = Book.last
+
+      expect(current_path).to eq(book_path(new_book))
       expect(new_book.title).to eq('Sphere')
+      expect(new_book.year_published).to eq(1988)
+      expect(new_book.book_cover_url).to eq('https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg')
+      expect(new_book.authors[0].name).to eq('Michael Crichton')
     end
   end
 end
