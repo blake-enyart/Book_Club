@@ -24,7 +24,7 @@
     <% end %></p>
     <p>Year Published: <%= @book.year_published %></p>
 </section>
-<div class='book-review-description' id=<%= @book.id %>>
+<div class="review-description" %>
   <% @book.reviews.each do |review| %>
   <h1>Title: <%= review.title %></h1>
   <p>Username: <%= review.username %></p>
