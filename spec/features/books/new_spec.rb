@@ -3,24 +3,25 @@ require 'rails_helper'
 RSpec.describe "user sees all books", type: :feature do
   describe 'user visits /books' do
     it 'user adds new book' do
-      visit root_path
-      within ".top-nav" do
-        click_link("New_Book")
-        book_name = 'Sphere'
+      book_name = 'Sphere'
 
-        visit new_book_path
+      visit new_book_path
 
-        fill_in 'book[name]', with: book_name
+      fill_in 'book[title]', with: 'Sphere'
+      fill_in 'book[year_published]', with: 1988
+      fill_in 'book[number_of_pages]', with: 345
+      fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
+      fill_in 'authors', with: "Michael Crichton"
 
-        click_button 'Create Book' 
+      click_button 'Create Book'
 
-        book = Book.last
-        expect(current_path).to eq(book_path(book))
-      end
+      book = Book.last
+      expect(current_path).to eq(book_path(book))
+      expect(new_book.book).to eq(book)
+      expect(new_book.title).to eq('Sphere')
     end
   end
 end
-
 
 
 # As a Visitor,
