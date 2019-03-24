@@ -6,6 +6,7 @@ class Review < ApplicationRecord
   def self.top_reviewers(limit)
     # review_count = Review.group(:username).count.sort_by{ |k,v| v }.reverse
     # review_count.slice(0,limit)
+    binding.pry
     review_count = Review.select('reviews.username, COUNT(reviews.username) AS review_count')
     .group(:username)
     .order('review_count DESC, reviews.username ASC')
