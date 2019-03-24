@@ -1,12 +1,21 @@
+require 'rails_helper'
+
 RSpec.describe "user sees all books", type: :feature do
   describe 'user visits /books' do
     it 'user adds new book' do
-
-      visit book_path
-
+      visit root_path
       within ".top-nav" do
         click_link("New_Book")
-        expect(current_path).to eq(new_book)
+        book_name = 'Sphere'
+
+        visit new_book_path
+
+        fill_in 'book[name]', with: book_name
+
+        click_button 'Create Book' 
+
+        book = Book.last
+        expect(current_path).to eq(book_path(book))
       end
     end
   end
