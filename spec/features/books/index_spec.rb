@@ -25,9 +25,10 @@ RSpec.describe "book index workflow", type: :feature do
         @review_7 = @book_2.reviews.create(title: 'title_7', rating: 3, text: 'body_7', username: 'user_2')
         @review_8 = @book_2.reviews.create(title: 'title_8', rating: 3, text: 'body_8', username: 'user_2')
 
-        @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
+        @review_9 = @book_3.reviews.create(title: 'title_9', rating: 5, text: 'body_9', username: 'user_3')
 
-        @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+        @review_10 = @book_4.reviews.create(title: 'title_10', rating: 1, text: 'body_10', username: 'user_4')
+        @review_11 = @book_4.reviews.create(title: 'title_11', rating: 1, text: 'body_11', username: 'user_4')
       end
 
       it "displays all books correctly" do
@@ -67,6 +68,15 @@ RSpec.describe "book index workflow", type: :feature do
 
           within('#btm-books') do
             expect(page).to have_content("#{@book_4.title} #{@book_2.title} #{@book_1.title}")
+          end
+
+          within('#top-users') do
+            reviewer_1 = @review_2.username
+            reviewer_2 = @review_3.username
+            reviewer_3 = @review_10.username
+
+            expect(page.body.index(reviewer_2)).to be < page.body.index(reviewer_1)
+            expect(page.body.index(reviewer_3)).to be < page.body.index(reviewer_2)
           end
         end
       end
