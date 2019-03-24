@@ -15,11 +15,11 @@ RSpec.describe "book show workflow", type: :feature do
       expect(page).to have_content("Year Published: #{book_1.year_published}")
       expect(page).to have_link("Delia Owens")
 
-      within("review-#{review_1.id}") do
+      within ".book-review-description" do
         expect(page).to have_content("Title: #{review_1.title}")
         expect(page).to have_content("Username: #{review_1.username}")
         expect(page).to have_content("Rating: #{review_1.rating}")
-        expect(page).to have_content("Description: #{review_1.description}")
+        expect(page).to have_content("Description: #{review_1.text}")
       end
     end
 
@@ -40,6 +40,10 @@ RSpec.describe "book show workflow", type: :feature do
         expect(page).to have_content(review_5.title)
         expect(page).not_to have_content(review_1.title)
         expect(page).not_to have_content(review_4.title)
+      end
+
+      within('#average_book_review') do
+          expect(page).to have_content(book_1.average_review)
       end
     end
   end
