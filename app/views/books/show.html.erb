@@ -1,3 +1,5 @@
+<%= link_to 'Delete', book_delete_path %>
+
 <div class='book-review-statistics-top' id=<%= @book.id %>>
   <% @book.top_three_reviews.each do |review| %>
   <h1>Title: <%= review.title %></h1>
