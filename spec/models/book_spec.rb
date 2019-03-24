@@ -18,8 +18,8 @@ describe Book, type: :model do
     before :each do
       @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
       @book_2 = Book.create(title: "East of Eden", number_of_pages: 608, year_published: 1952, book_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/56/EastOfEden.jpg")
-      @book_3 = Book.create(title: "book_3", number_of_pages: 300, year_published: 3, book_cover_url: "image_3")
-      @book_4 = Book.create(title: "book_4", number_of_pages: 400, year_published: 4, book_cover_url: "image_4")
+      @book_3 = Book.create(title: "Book_3", number_of_pages: 300, year_published: 3, book_cover_url: "image_3")
+      @book_4 = Book.create(title: "Book_4", number_of_pages: 400, year_published: 4, book_cover_url: "image_4")
 
       @author_1 = @book_1.authors.create(name: "Delia Owens")
       @author_2 = @book_2.authors.create(name: "John Steinbeck")
@@ -37,7 +37,7 @@ describe Book, type: :model do
       @review_7 = @book_2.reviews.create(title: 'title_7', rating: 3, text: 'body_7', username: 'user_2')
       @review_8 = @book_2.reviews.create(title: 'title_8', rating: 3, text: 'body_8', username: 'user_2')
 
-      @book_3.reviews.create(title: 'title_8', rating: 4, text: 'body_8', username: 'user_3')
+      @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
       @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
 
@@ -56,15 +56,29 @@ describe Book, type: :model do
     end
 
     it '.top_books' do
-      expected = Book.top_books(1)
+      actual = Book.top_books(1)
+      expected = [@book_3]
+
+      expect(actual.length).to eq(1)
+      expect(actual).to eq(expected)
+
+      actual = Book.top_books(3)
+      expected = [@book_3, @book_1, @book_2]
+
+      expect(actual.length).to eq(3)
+      expect(actual).to eq(expected)
+    end
+
+    it '.bottom_books' do
+      expected = Book.bottom_books(1)
 
       expect(expected.length).to eq(1)
-      expect(expected).to eq([@book_1])
+      expect(expected).to eq([@book_4])
 
-      expected = Book.top_books(3)
+      expected = Book.bottom_books(3)
 
       expect(expected.length).to eq(3)
-      expect(expected).to eq([@book_1, @book_3, @book_2])
+      expect(expected).to eq([@book_4, @book_2, @book_1])
     end
 
   end
@@ -80,7 +94,6 @@ describe Book, type: :model do
       @review_6 = @book_1.reviews.create(title: 'title_2', rating: 5, text: 'body_2', username: 'user_1')
       @review_7 = @book_1.reviews.create(title: 'title_3', rating: 4, text: 'body_3', username: 'user_2')
       @review_7 = @book_1.reviews.create(title: 'title_4', rating: 2, text: 'body_4', username: 'user_2')
-
     end
 
     it '.top_three_reviews' do
