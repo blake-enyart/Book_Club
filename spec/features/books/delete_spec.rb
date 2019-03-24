@@ -9,7 +9,7 @@ RSpec.describe 'Delete book workflow' do
 
       visit book_path(book_1)
 
-      click_on 'delete_path'
+      click_on 'delete_book'
 
       expect(page).to_not have_content(book_1.title)
       expect(page).to_not have_content("Author(s): Delia Owens")
