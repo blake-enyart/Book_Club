@@ -17,6 +17,15 @@
         <% end %>
       </ul>
     </section>
+
+    <section id="top-reviewers-ctn">
+      <% @top_reviewers.each_with_index do |reviewer, idx| %>
+      <article class="top-reviewer-<%= idx %>">
+        <p>User Name: <%= reviewer[0] %></p>
+        <p>Review Count: <%= reviewer[1] %></p>
+      </article>
+      <% end %>
+    </section>
   </section>
 
   <section class='book-ctn'>

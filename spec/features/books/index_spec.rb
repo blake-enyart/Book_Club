@@ -70,13 +70,13 @@ RSpec.describe "book index workflow", type: :feature do
             expect(page).to have_content("#{@book_4.title} #{@book_2.title} #{@book_1.title}")
           end
 
-          within('#top-users') do
+          within('#top-reviewers-ctn') do
             reviewer_1 = @review_2.username
             reviewer_2 = @review_3.username
             reviewer_3 = @review_10.username
 
-            expect(page.body.index(reviewer_2)).to be < page.body.index(reviewer_1)
-            expect(page.body.index(reviewer_3)).to be < page.body.index(reviewer_2)
+            expect(page.body.index(reviewer_2)).to be > page.body.index(reviewer_1)
+            expect(page.body.index(reviewer_3)).to be > page.body.index(reviewer_2)
           end
         end
       end
