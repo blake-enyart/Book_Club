@@ -1,8 +1,8 @@
 class Book < ApplicationRecord
 
   has_many :reviews, :dependent => :destroy
-  has_many :authors_books
-  has_many :authors, through: :authors_books
+  has_many :authors_books, :dependent => :destroy
+  has_many :authors, through: :authors_books, :dependent => :destroy
 
   validates_presence_of :title, :number_of_pages, :year_published, :book_cover_url
 
