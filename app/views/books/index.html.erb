@@ -35,6 +35,7 @@
       <%= link_to 'Highest Number of Pages', books_path(sort:['books.number_of_pages','DESC']) %>
       <%= link_to 'Lowest Number of Pages', books_path(sort:['books.number_of_pages','ASC']) %>
       <%= link_to 'Highest Number of Reviews', books_path(sort:['COUNT(reviews.id)','DESC']) %>
+      <%= link_to 'Lowest Number of Reviews', books_path(sort:['COUNT(reviews.id)','ASC']) %>
     </ul>
   </section>
 
