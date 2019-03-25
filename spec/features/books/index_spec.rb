@@ -118,9 +118,9 @@ RSpec.describe "book index workflow", type: :feature do
           click_link('Highest Average Rating')
 
           #expect book_3(rating=5) to come before book_1(rating=4)
-          expect(page.body.index(@book_1.title)).to be > page.body.index(@book_3.title)
-          expect(page.body.index(@book_2.title)).to be > page.body.index(@book_1.title)
-          expect(page.body.index(@book_4.title)).to be > page.body.index(@book_2.title)
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_3.id}")
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_2.id}")
         end
       end
 
@@ -129,11 +129,10 @@ RSpec.describe "book index workflow", type: :feature do
 
         within('#sort-methods') do
           click_link('Lowest Average Rating')
-
-          #expect book_3(rating=5) to come before book_1(rating=4)
-          expect(page.body.index(@book_2.title)).to be > page.body.index(@book_4.title)
-          expect(page.body.index(@book_1.title)).to be > page.body.index(@book_2.title)
-          expect(page.body.index(@book_3.title)).to be > page.body.index(@book_1.title)
+          #expect book_4(rating=1) to come before book_2(rating=3.75)
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_2.id}")
+          expect(page.body.index("book-card-#{@book_3.id}")).to be > page.body.index("book-card-#{@book_1.id}")
         end
       end
     end

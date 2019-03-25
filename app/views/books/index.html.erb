@@ -31,6 +31,7 @@
   <section id="sort-methods">
     <ul>
       <%= link_to 'Highest Average Rating', books_path(sort:['AVG(reviews.rating)','DESC']) %>
+      <%= link_to 'Lowest Average Rating', books_path(sort:['AVG(reviews.rating)','ASC']) %>
     </ul>
   </section>
 

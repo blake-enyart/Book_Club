@@ -82,11 +82,13 @@ describe Book, type: :model do
     end
 
     it '.sort_by' do
+      #highest average review test
       actual = Book.sort_by(['AVG(reviews.rating)', 'DESC'])
       expected = [@book_3, @book_1, @book_2, @book_4]
 
       expect(actual).to eq(expected)
-
+      
+      #lowest averate review test
       actual = Book.sort_by(['AVG(reviews.rating)', 'ASC'])
       expected = [@book_3, @book_1, @book_2, @book_4].reverse
 
