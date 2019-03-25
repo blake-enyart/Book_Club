@@ -40,6 +40,7 @@ describe Book, type: :model do
       @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
       @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+      @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
 
     end
 
@@ -103,6 +104,12 @@ describe Book, type: :model do
       #lowest number of pages test
       actual = Book.sort_by(['books.number_of_pages', 'ASC'])
       expected = [@book_2, @book_4, @book_1, @book_3].reverse
+
+      expect(actual).to eq(expected)
+
+      #highest number of reviews test
+      actual = Book.sort_by(['COUNT(reviews.id)', 'DESC'])
+      expected = [@book_2, @book_1, @book_4, @book_3]
 
       expect(actual).to eq(expected)
     end
