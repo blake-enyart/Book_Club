@@ -147,6 +147,18 @@ RSpec.describe "book index workflow", type: :feature do
           expect(page.body.index("book-card-#{@book_3.id}")).to be > page.body.index("book-card-#{@book_1.id}")
         end
       end
+
+      it 'lowest number of pages' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Lowest Number of Pages')
+          #expect book_3(pages=300) to come before book_1(pages=384)
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_3.id}")
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+        end
+      end
     end
   end
 end
