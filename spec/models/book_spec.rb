@@ -112,6 +112,12 @@ describe Book, type: :model do
       expected = [@book_2, @book_1, @book_4, @book_3]
 
       expect(actual).to eq(expected)
+
+      #lowest number of reviews test
+      actual = Book.sort_by(['COUNT(reviews.id)', 'ASC'])
+      expected = [@book_3, @book_4, @book_2, @book_1]
+
+      expect(actual).to eq(expected)
     end
   end
 
