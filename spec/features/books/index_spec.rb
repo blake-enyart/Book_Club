@@ -124,18 +124,18 @@ RSpec.describe "book index workflow", type: :feature do
         end
       end
 
-      # it 'lowest average rating' do
-      #   visit books_path
-      #
-      #   within('#sort-methods') do
-      #     click_link('Highest Average Rating')
-      #
-      #     #expect book_3(rating=5) to come before book_1(rating=4)
-      #     expect(page.body.index(@book_2.title)).to be > page.body.index(@book_4.title)
-      #     expect(page.body.index(@book_2.title)).to be > page.body.index(@book_1.title)
-      #     expect(page.body.index(@book_4.title)).to be > page.body.index(@book_2.title)
-      #   end
-      # end
+      it 'lowest average rating' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Lowest Average Rating')
+
+          #expect book_3(rating=5) to come before book_1(rating=4)
+          expect(page.body.index(@book_2.title)).to be > page.body.index(@book_4.title)
+          expect(page.body.index(@book_1.title)).to be > page.body.index(@book_2.title)
+          expect(page.body.index(@book_3.title)).to be > page.body.index(@book_1.title)
+        end
+      end
     end
   end
 end
