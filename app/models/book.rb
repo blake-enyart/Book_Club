@@ -25,4 +25,12 @@ class Book < ApplicationRecord
         .order('avg_score DESC, books.title ASC')
         .limit(limit)
   end
+
+  def self.bottom_books(limit)
+    Book.joins(:reviews)
+        .select('books.*, AVG(reviews.rating) AS avg_score')
+        .group(:id)
+        .order('avg_score ASC, books.title ASC')
+        .limit(limit)
+  end
 end

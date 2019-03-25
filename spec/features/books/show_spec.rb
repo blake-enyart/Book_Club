@@ -41,6 +41,10 @@ RSpec.describe "book show workflow", type: :feature do
         expect(page).not_to have_content(review_1.title)
         expect(page).not_to have_content(review_4.title)
       end
+
+      within('#average_book_review') do
+          expect(page).to have_content(book_1.average_review)
+      end
     end
   end
 end

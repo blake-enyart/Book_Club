@@ -1,5 +1,6 @@
 <section class='main'>
   <h1>All Books</h1>
+
   <section id="stats">
     <section id="top-books">
       <ul>
@@ -8,7 +9,25 @@
         <% end %>
       </ul>
     </section>
+
+    <section id="btm-books">
+      <ul>
+        <% @bottom_books.each do |book| %>
+        <li><%= book.title %></li>
+        <% end %>
+      </ul>
+    </section>
+
+    <section id="top-reviewers-ctn">
+      <% @top_reviewers.each_with_index do |reviewer, idx| %>
+      <article class="top-reviewer-<%= idx %>">
+        <p>User Name: <%= reviewer[0] %></p>
+        <p>Review Count: <%= reviewer[1] %></p>
+      </article>
+      <% end %>
+    </section>
   </section>
+
   <section class='book-ctn'>
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">

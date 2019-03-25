@@ -6,8 +6,8 @@ RSpec.describe "book index workflow", type: :feature do
       before :each do
         @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
         @book_2 = Book.create(title: "East of Eden", number_of_pages: 608, year_published: 1952, book_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/56/EastOfEden.jpg")
-        @book_3 = Book.create(title: "book_3", number_of_pages: 300, year_published: 3, book_cover_url: "image_3")
-        @book_4 = Book.create(title: "book_4", number_of_pages: 400, year_published: 4, book_cover_url: "image_4")
+        @book_3 = Book.create(title: "Book_3", number_of_pages: 300, year_published: 3, book_cover_url: "image_3")
+        @book_4 = Book.create(title: "Book_4", number_of_pages: 400, year_published: 4, book_cover_url: "image_4")
 
         @author_1 = @book_1.authors.create(name: "Delia Owens")
         @author_2 = @book_2.authors.create(name: "John Steinbeck")
@@ -25,9 +25,10 @@ RSpec.describe "book index workflow", type: :feature do
         @review_7 = @book_2.reviews.create(title: 'title_7', rating: 3, text: 'body_7', username: 'user_2')
         @review_8 = @book_2.reviews.create(title: 'title_8', rating: 3, text: 'body_8', username: 'user_2')
 
-        @book_3.reviews.create(title: 'title_8', rating: 4, text: 'body_8', username: 'user_3')
+        @review_9 = @book_3.reviews.create(title: 'title_9', rating: 5, text: 'body_9', username: 'user_3')
 
-        @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+        @review_10 = @book_4.reviews.create(title: 'title_10', rating: 1, text: 'body_10', username: 'user_4')
+        @review_11 = @book_4.reviews.create(title: 'title_11', rating: 1, text: 'body_11', username: 'user_4')
       end
 
       it "displays all books correctly" do
@@ -62,7 +63,20 @@ RSpec.describe "book index workflow", type: :feature do
 
         within('#stats') do
           within('#top-books') do
-            expect(page).to have_content("#{@book_1.title} #{@book_3.title} #{@book_2.title}")
+            expect(page).to have_content("#{@book_3.title} #{@book_1.title} #{@book_2.title}")
+          end
+
+          within('#btm-books') do
+            expect(page).to have_content("#{@book_4.title} #{@book_2.title} #{@book_1.title}")
+          end
+
+          within('#top-reviewers-ctn') do
+            reviewer_1 = @review_2.username
+            reviewer_2 = @review_3.username
+            reviewer_3 = @review_10.username
+
+            expect(page.body.index(reviewer_2)).to be > page.body.index(reviewer_1)
+            expect(page.body.index(reviewer_3)).to be > page.body.index(reviewer_2)
           end
         end
       end
