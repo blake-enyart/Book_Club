@@ -33,4 +33,11 @@ class Book < ApplicationRecord
         .order('avg_score ASC, books.title ASC')
         .limit(limit)
   end
+
+  def self.sort_by(sort_method)
+    self.joins(:reviews)
+        .select("books.*, #{sort_method[0]} AS sort_attr")
+        .group(:id)
+        .order("sort_attr #{sort_method[1]}, books.title ASC")
+  end
 end
