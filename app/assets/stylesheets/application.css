@@ -14,14 +14,6 @@
  = require_self
  */
 
-
- *
-{
-  margin: 0;
-  padding: 0;
-
-}
-
 body {
   background-color: #E8E8E8;
   margin: 0px;
@@ -34,14 +26,15 @@ header {
   padding-bottom: 20px;
 }
 
-
 h1 {
   font-size: 2rem;
   color: 	#0099ff;
   font-family: 'Muli', sans-serif;
 }
 
-
+/* #main {
+  display: flex;
+} */
 
 .topnav {
   padding-top: 40px;
@@ -68,30 +61,5 @@ h1 {
   top-margin: 0px;
 }
 
-.book-review-description {
-  font-size: 2rem;
-  color: 	#202020;
-  font-family: 'Muli', sans-serif;
-}
 
-.book-review-card {
-  font-size: 2rem;
-  color: 	#202020;
-  font-family: 'Muli', sans-serif;
-}
 
-.book-review-statistics-top {
-  font-size: .5rem;
-  color: 	#202020;
-  font-family: 'Muli', sans-serif;
-  height: 200px;
-  margin-top: 100px;
-}
-
-.book-review-statistics-bottom {
-  font-size: 2rem;
-  color: 	#202020;
-  font-family: 'Muli', sans-serif;
-  height: 200px;
-  margin-top: 100px;
-}
