@@ -6,10 +6,13 @@ class BooksController < ApplicationController
 
   def create
     author_names = params[:authors].split(',')
-    book = Book.create(book_params)
-    book.save
-    assign_book_to_author(author_names, book)
-    redirect_to book_path(book[:id])
+    book = Book.new(book_params)
+    if book.save
+      assign_book_to_author(author_names, book)
+      redirect_to book_path(book[:id])
+    else
+      redirect_to books_path
+    end
   end
 
   def assign_book_to_author(author_names, book)
