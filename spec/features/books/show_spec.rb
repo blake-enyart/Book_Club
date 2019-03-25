@@ -15,7 +15,7 @@ RSpec.describe "book show workflow", type: :feature do
       expect(page).to have_content("Year Published: #{book_1.year_published}")
       expect(page).to have_link("Delia Owens")
 
-      within ".book-review-description" do
+      within(".review-description") do
         expect(page).to have_content("Title: #{review_1.title}")
         expect(page).to have_content("Username: #{review_1.username}")
         expect(page).to have_content("Rating: #{review_1.rating}")

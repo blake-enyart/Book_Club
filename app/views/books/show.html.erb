@@ -1,4 +1,7 @@
 
+
+<%= link_to 'delete_book', book_path(@book), method: :delete %>
+
 <div class="book-review-statistics-top" id=<%= @book.id %>>
   <% @top_three_reviews.each do |review| %>
   <h1>Title: <%= review.title %></h1>
@@ -29,17 +32,16 @@
       <%= link_to(author.name, author_path(author)) %>
     <% end %></p>
     <p>Year Published: <%= @book.year_published %></p>
-</section>
+  </section>
 
-  <div class='book-review-description' id="<%= @book.id %>">
+  <div class="review-description" %>
     <% @book.reviews.each do |review| %>
-    <section class="review">
     <h1>Title: <%= review.title %></h1>
     <p>Username: <%= review.username %></p>
     <p>Rating: <%= review.rating %></p>
     <div class='book-review-card'>
       <p>Description: <%= review.text %></p>
-    </section>
     </div>
     <% end %>
   </div>
+</section>
