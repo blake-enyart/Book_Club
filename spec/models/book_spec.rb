@@ -86,6 +86,11 @@ describe Book, type: :model do
       expected = [@book_3, @book_1, @book_2, @book_4]
 
       expect(actual).to eq(expected)
+
+      actual = Book.sort_by(['AVG(reviews.rating)', 'ASC'])
+      expected = [@book_3, @book_1, @book_2, @book_4].reverse
+
+      expect(actual).to eq(expected)
     end
   end
 
