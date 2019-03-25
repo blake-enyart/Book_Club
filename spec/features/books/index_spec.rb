@@ -126,7 +126,7 @@ RSpec.describe "book index workflow", type: :feature do
 
       it 'lowest average rating' do
         visit books_path
-
+        
         within('#sort-methods') do
           click_link('Lowest Average Rating')
           #expect book_4(rating=1) to come before book_2(rating=3.75)
