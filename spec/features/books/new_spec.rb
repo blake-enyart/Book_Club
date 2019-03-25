@@ -21,6 +21,7 @@ RSpec.describe "user sees all books", type: :feature do
 
       new_book = Book.last
 
+
       expect(current_path).to eq(book_path(new_book))
       expect(new_book.title).to eq('Sphere')
       expect(new_book.year_published).to eq(1988)

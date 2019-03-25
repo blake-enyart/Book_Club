@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "book show workflow", type: :feature do
   context 'as a visitor' do
-    xit "displays book correctly" do
+    it "displays book correctly" do
       book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
       author_1 = book_1.authors.create(name: "Delia Owens")
       review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
@@ -15,7 +15,7 @@ RSpec.describe "book show workflow", type: :feature do
       expect(page).to have_content("Year Published: #{book_1.year_published}")
       expect(page).to have_link("Delia Owens")
 
-      within ".book-review-description" do
+      within(".review-description") do
         expect(page).to have_content("Title: #{review_1.title}")
         expect(page).to have_content("Username: #{review_1.username}")
         expect(page).to have_content("Rating: #{review_1.rating}")
@@ -23,7 +23,7 @@ RSpec.describe "book show workflow", type: :feature do
       end
     end
 
-    xit "displays book review statistics" do
+    it "displays book review statistics" do
 
       book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
       review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
