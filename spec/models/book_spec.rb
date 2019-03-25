@@ -99,6 +99,12 @@ describe Book, type: :model do
       expected = [@book_2, @book_4, @book_1, @book_3]
 
       expect(actual).to eq(expected)
+
+      #lowest number of pages test
+      actual = Book.sort_by(['books.number_of_pages', 'ASC'])
+      expected = [@book_2, @book_4, @book_1, @book_3].reverse
+
+      expect(actual).to eq(expected)
     end
   end
 
