@@ -1,47 +1,47 @@
-
-
 <%= link_to 'delete_book', book_path(@book), method: :delete %>
 
-<div class="book-review-statistics-top" id=<%= @book.id %>>
-  <% @top_three_reviews.each do |review| %>
-  <h1>Title: <%= review.title %></h1>
-  <p>Review Rating: <%= review.rating %></p>
-  <p>Username: <%= review.username %></p>
-  <% end %>
-</div>
-
-<div class="book-review-statistics-bottom" id=<%= @book.id %>>
-  <% @bottom_three_reviews.each do |review| %>
-  <h1>Title: <%= review.title %></h1>
-  <p>Review Rating: <%= review.rating %></p>
-  <p>Username: <%= review.username %></p>
-  <% end %>
-</div>
-
-<section id='average_book_review'>
-  <p>Average Book Review: <%= @book.average_review %></p>
-</section>
-
 <section class="main">
-  <h1><% @book.title %></h1>
+  <h1><%= @book.title %></h1>
   <section class='book-card' id=<%= @book.id %>>
-    <p><%= link_to @book.title, book_path(@book) %></p>
+    <!-- <p><%= link_to @book.title, book_path(@book) %></p> -->
+    <img src=<%= @book.book_cover_url %> alt="Book cover">
     <p>Number of Pages: <%= @book.number_of_pages %></p>
     <p>Author(s):
     <% @book.authors.each do |author| %>
-      <%= link_to(author.name, author_path(author)) %>
-    <% end %></p>
+    <%= link_to(author.name, author_path(author)) %>
+    <% end %>
+    </p>
     <p>Year Published: <%= @book.year_published %></p>
-  </section>
-
-  <div class="review-description" %>
-    <% @book.reviews.each do |review| %>
-    <h1>Title: <%= review.title %></h1>
-    <p>Username: <%= review.username %></p>
-    <p>Rating: <%= review.rating %></p>
-    <div class='book-review-card'>
-      <p>Description: <%= review.text %></p>
+    <p id='average_book_review'>
+      Average Book Review: <%= @book.average_review %>
+    </p>
+    <div class="review-description" %>
+      <% @book.reviews.each do |review| %>
+      <h1>Title: <%= review.title %></h1>
+      <p>Username: <%= review.username %></p>
+      <p>Rating: <%= review.rating %></p>
+      <div class='book-review-card'>
+        <p>Description: <%= review.text %></p>
+      </div>
+      <% end %>
     </div>
+  </section>
+</section>
+
+<section id='statistics'>
+  <div class="book-review-statistics-top" id=<%= @book.id %>>
+    <% @top_three_reviews.each do |review| %>
+    <h1>Title: <%= review.title %></h1>
+    <p>Review Rating: <%= review.rating %></p>
+    <p>Username: <%= review.username %></p>
+    <% end %>
+  </div>
+
+  <div class="book-review-statistics-bottom" id=<%= @book.id %>>
+    <% @bottom_three_reviews.each do |review| %>
+    <h1>Title: <%= review.title %></h1>
+    <p>Review Rating: <%= review.rating %></p>
+    <p>Username: <%= review.username %></p>
     <% end %>
   </div>
 </section>
