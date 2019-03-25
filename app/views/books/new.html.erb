@@ -1,3 +1,9 @@
+
+<% @book.errors.full_messages.each do |msg| %>
+<%= msg %>
+<% end %>
+
+
 <%= form_for @book do |f| %>
   <p><%= f.label :title %></p>
   <%= f.text_field :title %>

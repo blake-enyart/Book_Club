@@ -5,6 +5,7 @@ class Book < ApplicationRecord
   has_many :authors, through: :authors_books
 
   validates_presence_of :title, :number_of_pages, :year_published, :book_cover_url
+  validates_uniqueness_of :title
 
   def average_review
     self.reviews.average(:rating)
