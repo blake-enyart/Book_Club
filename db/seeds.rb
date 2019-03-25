@@ -8,11 +8,10 @@
 
 require './app/models/book'
 
-Author.destroy_all
 Review.destroy_all
 Book.destroy_all
 Author.destroy_all
-Review.destroy_all
+
 
 file_path = './db/data/books.csv'
 file = File.open(file_path)
@@ -31,6 +30,7 @@ author_list = CSV.new(file, headers: true, header_converters: :symbol).read
 author_list = author_list.map { |author| author.to_h }
 
 author_list.each do |author|
+  #Book.find possibly
   Book.where(title: author[:book_title])[0].authors.find_or_create_by(name: author[:name])
 end
 

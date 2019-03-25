@@ -8,16 +8,14 @@ RSpec.describe 'Delete book workflow' do
       review_1 = book_1.reviews.create(title: "This book is terrible", username: "frank55", rating: 1, text: "Boots")
 
       visit book_path(book_1)
-      within 'body'
 
       click_on 'delete_book'
 
-      expect(page).to_not have_content(book_1.title)
-      expect(page).to_not have_content("Author(s): Delia Owens")
-      expect(page).to_not have_content("Number of Pages: #{book_1.number_of_pages}")
-      expect(page).to_not have_content("Year Published: #{book_1.year_published}")
-      expect(page).to_not have_link("Delia Owens")
       expect(current_path).to eq(books_path)
+      expect(page).to_not have_content(book_1.title)
+      expect(page).to_not have_content(book_1.number_of_pages)
+      expect(page).to_not have_content(book_1.year_published)
+      expect(page).to_not have_content(book_1.book_cover_url)
     end
   end
 end

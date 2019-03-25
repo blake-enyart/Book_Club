@@ -55,36 +55,11 @@ h1 {
 .title {
   float: right;
   font-family: 'Lobster';
-  color: #A9A9A9;
+  color: #202020;
   font-size: 3rem;
   width: 20%;
   top-margin: 0px;
 }
 
-/* .book-review-description {
-  font-size: 2rem;
-  color: 	#0099ff;
-  font-family: 'Muli', sans-serif;
-} */
-/*
-.book-review-card {
-  font-size: 2rem;
-  color: 	#0099ff;
-  font-family: 'Muli', sans-serif;
-} */
 
-/* .book-review-statistics-top {
-  font-size: 2rem;
-  color: 	#0099ff;
-  font-family: 'Muli', sans-serif;
-  height: 200px;
-  margin-top: 100px;
-}
 
-.book-review-statistics-bottom {
-  font-size: 2rem;
-  color: 	#0099ff;
-  font-family: 'Muli', sans-serif;
-  height: 200px;
-  margin-top: 100px;
-} */
