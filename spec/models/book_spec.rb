@@ -81,7 +81,14 @@ describe Book, type: :model do
       expect(expected).to eq([@book_4, @book_2, @book_1])
     end
 
+    it '.sort_by' do
+      actual = Book.sort_by('AVG(reviews.rating)', 'DESC')
+      expected = [@book_3, @book_1, @book_2, @book_4]
+
+      expect(actual).to eq(expected)
+    end
   end
+
   describe 'top_3_statistics' do
     before :each do
       @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
