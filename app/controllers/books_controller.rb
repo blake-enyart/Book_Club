@@ -27,7 +27,7 @@ class BooksController < ApplicationController
     @top_books = Book.top_books(3)
     @bottom_books = Book.bottom_books(3)
     @top_reviewers = Review.top_reviewers(3)
-    @sorted_books = Book.sort_by(params[:sort])
+    @sorted_books = Book.sort_by(params[:sort]) if params[:sort]
   end
 
   def show
