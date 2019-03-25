@@ -20,10 +20,14 @@ class BooksController < ApplicationController
   end
 
   def index
-    @books = Book.all
     @top_books = Book.top_books(3)
     @bottom_books = Book.bottom_books(3)
     @top_reviewers = Review.top_reviewers(3)
+    if params[:sort]
+      @books = Book.sort_by(params[:sort])
+    else
+      @books = Book.all
+    end
   end
 
   def show

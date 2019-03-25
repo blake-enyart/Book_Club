@@ -28,6 +28,17 @@
     </section>
   </section>
 
+  <section id="sort-methods">
+    <ul>
+      <%= link_to 'Highest Average Rating', books_path(sort:['AVG(reviews.rating)','DESC']) %>
+      <%= link_to 'Lowest Average Rating', books_path(sort:['AVG(reviews.rating)','ASC']) %>
+      <%= link_to 'Highest Number of Pages', books_path(sort:['books.number_of_pages','DESC']) %>
+      <%= link_to 'Lowest Number of Pages', books_path(sort:['books.number_of_pages','ASC']) %>
+      <%= link_to 'Highest Number of Reviews', books_path(sort:['COUNT(reviews.id)','DESC']) %>
+      <%= link_to 'Lowest Number of Reviews', books_path(sort:['COUNT(reviews.id)','ASC']) %>
+    </ul>
+  </section>
+
   <section class='book-ctn'>
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">

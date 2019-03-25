@@ -40,6 +40,7 @@ describe Book, type: :model do
       @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
       @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+      @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
 
     end
 
@@ -81,7 +82,45 @@ describe Book, type: :model do
       expect(expected).to eq([@book_4, @book_2, @book_1])
     end
 
+    it '.sort_by' do
+      #highest average review test
+      actual = Book.sort_by(['AVG(reviews.rating)', 'DESC'])
+      expected = [@book_3, @book_1, @book_2, @book_4]
+
+      expect(actual).to eq(expected)
+
+      #lowest averate review test
+      actual = Book.sort_by(['AVG(reviews.rating)', 'ASC'])
+      expected = [@book_3, @book_1, @book_2, @book_4].reverse
+
+      expect(actual).to eq(expected)
+
+      #highest number of pages test
+      actual = Book.sort_by(['books.number_of_pages', 'DESC'])
+      expected = [@book_2, @book_4, @book_1, @book_3]
+
+      expect(actual).to eq(expected)
+
+      #lowest number of pages test
+      actual = Book.sort_by(['books.number_of_pages', 'ASC'])
+      expected = [@book_2, @book_4, @book_1, @book_3].reverse
+
+      expect(actual).to eq(expected)
+
+      #highest number of reviews test
+      actual = Book.sort_by(['COUNT(reviews.id)', 'DESC'])
+      expected = [@book_2, @book_1, @book_4, @book_3]
+
+      expect(actual).to eq(expected)
+
+      #lowest number of reviews test
+      actual = Book.sort_by(['COUNT(reviews.id)', 'ASC'])
+      expected = [@book_3, @book_4, @book_2, @book_1]
+
+      expect(actual).to eq(expected)
+    end
   end
+
   describe 'top_3_statistics' do
     before :each do
       @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")

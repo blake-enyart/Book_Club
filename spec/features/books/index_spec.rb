@@ -111,16 +111,76 @@ RSpec.describe "book index workflow", type: :feature do
         @review_11 = @book_4.reviews.create(title: 'title_11', rating: 1, text: 'body_11', username: 'user_4')
       end
 
-      xit 'highest average rating' do
+      it 'highest average rating' do
         visit books_path
 
-        within('#main') do
-          click_button('Highest Average Rating')
+        within('#sort-methods') do
+          click_link('Highest Average Rating')
 
           #expect book_3(rating=5) to come before book_1(rating=4)
-          expect(page.body.index(@book_1.title)).to be > page.body.index(@book_3.title)
-          expect(page.body.index(@book_2.title)).to be > page.body.index(@book_1.title)
-          expect(page.body.index(@book_4.title)).to be > page.body.index(@book_2.title)
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_3.id}")
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_2.id}")
+        end
+      end
+
+      it 'lowest average rating' do
+        visit books_path
+        
+        within('#sort-methods') do
+          click_link('Lowest Average Rating')
+          #expect book_4(rating=1) to come before book_2(rating=3.75)
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_2.id}")
+          expect(page.body.index("book-card-#{@book_3.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+        end
+      end
+
+      it 'highest number of pages' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Highest Number of Pages')
+          #expect book_2(pages=608) to come before book_4(pages=400)
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_2.id}")
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+          expect(page.body.index("book-card-#{@book_3.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+        end
+      end
+
+      it 'lowest number of pages' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Lowest Number of Pages')
+          #expect book_3(pages=300) to come before book_1(pages=384)
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_3.id}")
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+        end
+      end
+
+      it 'highest number of reviews' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Highest Number of Reviews')
+          #expect book_2(reviews=4 AND title='East...') to come before book_1(reviews=4 AND title='Where...')
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_2.id}")
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_1.id}")
+          expect(page.body.index("book-card-#{@book_3.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+        end
+      end
+
+      it 'lowest number of reviews' do
+        visit books_path
+
+        within('#sort-methods') do
+          click_link('Lowest Number of Reviews')
+          #expect book_3(reviews=1) to come before book_4(reviews=2)
+          expect(page.body.index("book-card-#{@book_4.id}")).to be > page.body.index("book-card-#{@book_3.id}")
+          expect(page.body.index("book-card-#{@book_2.id}")).to be > page.body.index("book-card-#{@book_4.id}")
+          expect(page.body.index("book-card-#{@book_1.id}")).to be > page.body.index("book-card-#{@book_2.id}")
         end
       end
     end
