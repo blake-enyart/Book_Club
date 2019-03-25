@@ -10,12 +10,10 @@ RSpec.describe 'Delete author workflow' do
 
       click_on 'delete_author'
 
+      expect(current_path).to eq(books_path)
       expect(page).to_not have_content(@book_1.title)
       expect(page).to_not have_content("Author(s): Delia Owens")
-      expect(page).to_not have_content("Number of Pages: #{@book_1.number_of_pages}")
-      expect(page).to_not have_content("Year Published: #{@book_1.year_published}")
       expect(page).to_not have_xpath("//img[@src='#{@book_1.book_cover_url}']")
-      expect(current_path).to eq(books_path)
     end
   end
 end

@@ -8,16 +8,14 @@ class AuthorsController < ApplicationController
   def destroy
     author = Author.find(params[:id])
     destroy_books_by_author(author)
+
+    author.destroy
     redirect_to books_path
   end
 
   def destroy_books_by_author(author)
-    Book.all.each do |book|
-      book.authors.each do |book_author|
-        if book_author == author
-          book.destroy
-        end
-      end
+    author.books.each do |book|
+      book.destroy
     end
   end
 end
