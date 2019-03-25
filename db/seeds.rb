@@ -31,7 +31,7 @@ author_list = CSV.new(file, headers: true, header_converters: :symbol).read
 author_list = author_list.map { |author| author.to_h }
 
 author_list.each do |author|
-  Book.where(title: author[:book_title])[0].authors.create(name: author[:name])
+  Book.where(title: author[:book_title])[0].authors.find_or_create_by(name: author[:name])
 end
 
 file_path = './db/data/reviews.csv'

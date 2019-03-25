@@ -17,6 +17,7 @@ RSpec.describe 'Delete book workflow' do
       expect(page).to_not have_content("Number of Pages: #{book_1.number_of_pages}")
       expect(page).to_not have_content("Year Published: #{book_1.year_published}")
       expect(page).to_not have_link("Delia Owens")
+      expect(current_path).to eq(books_path)
     end
   end
 end

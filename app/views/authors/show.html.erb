@@ -1,0 +1,13 @@
+<section class="main">
+  <h1><%= @author.name %></h1>
+  <br>
+  <% @books.each do |book| %>
+  <h1><% book.title %></h1>
+  <section class='book-card' id="book-card-<%= book.id %>">
+    <img src="<%= book.book_cover_url %>" alt="book cover image">
+    <p><%= link_to book.title, book_path(book) %></p>
+    <p>Number of Pages: <%= book.number_of_pages %></p>
+    <p>Year Published: <%= book.year_published %></p>
+  </section>
+  <% end %>
+</section>
