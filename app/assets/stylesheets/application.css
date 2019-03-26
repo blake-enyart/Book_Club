@@ -36,30 +36,28 @@ h1 {
   display: flex;
 } */
 
-.topnav {
+.top-nav {
   padding-top: 40px;
   flex-direction: row;
   justify-content: space-around;
   width: 40%;
 }
 
-.topnav a {
+.top-nav a {
   color: gray;
   text-decoration: none;
   font-family: 'Muli', sans-serif;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
   width: 50%;
+  font-size: 1.5rem;
 }
 
 .title {
   float: right;
   font-family: 'Lobster';
-  color: #202020;
+  color: #909090;
   font-size: 3rem;
   width: 20%;
   top-margin: 0px;
 }
-
-
-
