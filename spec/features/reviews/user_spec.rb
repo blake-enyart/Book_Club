@@ -31,7 +31,7 @@ RSpec.describe "user sees book index page", type: :feature do
 
     end
 
-    it 'user clicks on user name' do
+    it 'user clicks reviewer name and sees all reviews' do
       visit books_path
 
       within("#top-reviewers-ctn") do
@@ -41,12 +41,22 @@ RSpec.describe "user sees book index page", type: :feature do
       expect(current_path).to eq(user_path('user_1'))
 
       within("#main") do
-        expect(page).to have_content('Title: title_1')
-        expect(page).to have_content('Description: body_1')
+        within("#review-card-#{@review_1.id}") do
+          expect(page).to have_content('Title: title_1')
+          expect(page).to have_content('Description: body_1')
+          expect(page).to have_content("Rating: #{@review_1.rating}")
+          expect(page).to have_content("Book: #{@review_1.book.title}")
+          expect(page).to have_content("Created At: #{@review_1.created_at}")
+        end
 
-        expect(page).to have_content('Title: title_2')
-        expect(page).to have_content('Description: body_2')
-        
+        within("#review-card-#{@review_2.id}") do
+          expect(page).to have_content("Title: #{@review_2.title}")
+          expect(page).to have_content("Description: #{@review_2.text}")
+          expect(page).to have_content("Rating: #{@review_2.rating}")
+          expect(page).to have_content("Book: #{@review_2.book.title}")
+          expect(page).to have_content("Created At: #{@review_2.created_at}")
+        end
+
         expect(page).not_to have_content('Title: title_3')
         expect(page).not_to have_content('Description: body_3')
       end

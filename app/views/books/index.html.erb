@@ -21,7 +21,7 @@
     <section id="top-reviewers-ctn">
       <% @top_reviewers.each_with_index do |reviewer, idx| %>
       <article class="top-reviewer-<%= idx %>">
-        <p>User Name: <%= reviewer[0] %></p>
+        <p>User Name: <%= link_to reviewer[0], user_path(reviewer[0]) %></p>
         <p>Review Count: <%= reviewer[1] %></p>
       </article>
       <% end %>

@@ -1,0 +1,15 @@
+<section id="main">
+  <h1><%= @user_reviews.first.username %></h1>
+  <section id="review-ctn">
+    <% @user_reviews.each do |review| %>
+    <section id="review-card-<%= review.id %>">
+      <h3>Title: <%= review.title %></h3>
+      <p>Rating: <%= review.rating %></p>
+      <p>Created At: <%= review.created_at %></p>
+      <p>Description: <%= review.text %></p>
+      <p>Book: <%= review.book.title %></p>
+      <img src="<%= review.book.book_cover_url %>" alt="book cover">
+    </section>
+    <% end %>
+  </section>
+</section>
