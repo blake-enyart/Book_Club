@@ -38,6 +38,15 @@ RSpec.describe 'Book links' do
 
           expect(current_path).to eq(book_path(@book_1))
         end
+
+
+        visit author_path(@author_1)
+
+        within('.main') do
+          click_link "Wheadas"
+
+          expect(current_path).to eq(book_path(@book_1))
+        end
       end
     end
   end
