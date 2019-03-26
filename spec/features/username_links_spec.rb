@@ -20,9 +20,9 @@ RSpec.describe 'username links' do
 
         within ".review-description" do
           within("#review-description-#{@review_1.id}") do
-            click_link "user_1"
+            click_link "User 1"
 
-            expect(current_path).to eq(user_path('user_1'))
+            expect(current_path).to eq(user_path('User 1'))
           end
         end
 
@@ -31,9 +31,9 @@ RSpec.describe 'username links' do
         within("#statistics") do
           within ".book-review-statistics-top" do
             within("#statistics-top-#{@review_2.id}") do
-              click_link "user_1"
+              click_link "User 1"
 
-              expect(current_path).to eq(user_path('user_1'))
+              expect(current_path).to eq(user_path('User 1'))
             end
           end
         end
@@ -41,9 +41,9 @@ RSpec.describe 'username links' do
         visit book_path(@book_1)
 
         within("#statistics-bottom-#{@review_3.id}") do
-          click_link "user_1"
+          click_link "User 1"
 
-          expect(current_path).to eq(user_path('user_1'))
+          expect(current_path).to eq(user_path('User 1'))
         end
       end
     end

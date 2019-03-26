@@ -1,8 +1,11 @@
 class Review < ApplicationRecord
   belongs_to :book
 
-
   validates_presence_of :title, :rating, :text, :username
+
+  before_save do |review|
+    review.username = review.username.downcase.titleize
+  end
 
   def self.top_reviewers(limit)
     # review_count = Review.group(:username).count.sort_by{ |k,v| v }.reverse
@@ -34,6 +37,16 @@ class Review < ApplicationRecord
       where(username: user_name).order(created_at: :desc)
     elsif sort_method == 'oldest'
       where(username: user_name).order(created_at: :asc)
+    end
+  end
+
+  def self.add_review(book, review_params)
+    book_review_users = book.reviews.pluck(:username)
+    if book_review_users.include?(review_params[:username].titlecase)
+      false
+    else
+      book.reviews.create(review_params)
+      true
     end
   end
 end

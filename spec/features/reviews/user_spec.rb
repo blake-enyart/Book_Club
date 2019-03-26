@@ -35,10 +35,10 @@ RSpec.describe "user sees book index page", type: :feature do
         visit books_path
 
         within("#top-reviewers-ctn") do
-          click_link("user_1")
+          click_link("User 1")
         end
 
-        expect(current_path).to eq(user_path('user_1'))
+        expect(current_path).to eq(user_path('User 1'))
 
         within("#main") do
           within("#review-card-#{@review_1.id}") do
@@ -66,17 +66,17 @@ RSpec.describe "user sees book index page", type: :feature do
         visit books_path
 
         within("#top-reviewers-ctn") do
-          click_link("user_1")
+          click_link("User 1")
         end
 
-        expect(current_path).to eq(user_path('user_1'))
+        expect(current_path).to eq(user_path('User 1'))
         expect(page).to have_css("#review-card-#{@review_1.id}")
 
         within("#review-card-#{@review_1.id}") do
           click_link("Delete Review")
         end
 
-        expect(current_path).to eq(user_path('user_1'))
+        expect(current_path).to eq(user_path('User 1'))
 
         expect(page).not_to have_css("#review-card-#{@review_1.id}")
       end
@@ -85,37 +85,37 @@ RSpec.describe "user sees book index page", type: :feature do
         visit books_path
 
         within("#top-reviewers-ctn") do
-          click_link("user_4")
+          click_link("User 4")
         end
 
-        expect(current_path).to eq(user_path('user_4'))
+        expect(current_path).to eq(user_path('User 4'))
         expect(page).to have_css("#review-card-#{@review_10.id}")
 
         within("#review-card-#{@review_10.id}") do
           click_link("Delete Review")
         end
 
-        expect(current_path).to eq(user_path('user_4'))
+        expect(current_path).to eq(user_path('User 4'))
 
         expect(page).not_to have_css("#review-card-#{@review_10.id}")
-        expect(page).to have_content("user_4")
+        expect(page).to have_content("User 4")
 
         within("#review-card-#{@review_11.id}") do
           click_link("Delete Review")
         end
 
-        expect(current_path).to eq(user_path('user_4'))
+        expect(current_path).to eq(user_path('User 4'))
 
         expect(page).not_to have_css("#review-card-#{@review_11.id}")
         expect(page).to have_content("No reviews for this user")
-        expect(page).to have_content("user_4")
+        expect(page).to have_content("User 4")
       end
 
       it 'orders reviews newest first' do
         visit books_path
 
         within("#top-reviewers-ctn") do
-          click_link("user_4")
+          click_link("User 4")
         end
 
         click_link("Newest First")
@@ -128,7 +128,7 @@ RSpec.describe "user sees book index page", type: :feature do
         visit books_path
 
         within("#top-reviewers-ctn") do
-          click_link("user_4")
+          click_link("User 4")
         end
 
         click_link("Oldest First")

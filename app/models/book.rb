@@ -7,6 +7,10 @@ class Book < ApplicationRecord
   validates_presence_of :title, :number_of_pages, :year_published, :book_cover_url
   validates_uniqueness_of :title
 
+  before_save do |book|
+    book.title = book.title.downcase.titleize
+  end
+
   def average_review
     self.reviews.average(:rating)
   end
