@@ -21,6 +21,11 @@ class Review < ApplicationRecord
   end
 
   def self.find_reviews(user_name)
-    where(username: user_name).order(:created_at)
+    review_list = where(username: user_name).order(:created_at)
+    if review_list[0]
+      review_list
+    else
+      user_name
+    end
   end
 end
