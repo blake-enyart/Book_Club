@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe "user sees all books", type: :feature do
   describe 'user visits /books' do
-    it 'user adds new book' do
+    it 'user adds new book and cant create new book with same title' do
 
       visit root_path
       within 'top-nav'
@@ -26,9 +26,7 @@ RSpec.describe "user sees all books", type: :feature do
       expect(new_book.year_published).to eq(1988)
       expect(new_book.book_cover_url).to eq('https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg')
       expect(new_book.authors[0].name).to eq('Michael Crichton')
-    end
 
-    it 'verifies it can't add book with same name again.' do
 
       visit root_path
       within 'top-nav'
@@ -42,6 +40,8 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'authors', with: 'Bichael Crichton'
 
       click_button 'Create Book'
+
+      new_book = Book.last
 
       expect(current_path).to_not eq(book_path(new_book))
     end
