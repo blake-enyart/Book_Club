@@ -12,7 +12,7 @@
         <p>Rating: <%= review.rating %></p>
         <p>Created At: <%= review.created_at %></p>
         <p>Description: <%= review.text %></p>
-        <p>Book: <%= review.book.title %></p>
+        <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
         <img src="<%= review.book.book_cover_url %>" alt="book cover">
         <%= link_to 'Delete Review', book_review_path(review.book, review), method: :delete %>
       </section>
