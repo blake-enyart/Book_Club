@@ -27,9 +27,8 @@ RSpec.describe "user sees book index page", type: :feature do
 
         @review_9 = @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
-        @review_10 = @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
-        @review_11 = @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
-
+        @review_10 = @book_4.reviews.create(title: 'title_10', rating: 1, text: 'body_10', username: 'user_4')
+        @review_11 = @book_4.reviews.create(title: 'title_11', rating: 1, text: 'body_11', username: 'user_4')
       end
 
       it 'sees all reviews' do
@@ -123,6 +122,19 @@ RSpec.describe "user sees book index page", type: :feature do
 
         expect(page.body.index("review-card-#{@review_10.id}")).to be >
           page.body.index("review-card-#{@review_11.id}")
+      end
+
+      it 'orders reviews oldest first' do
+        visit books_path
+
+        within("#top-reviewers-ctn") do
+          click_link("user_4")
+        end
+
+        click_link("Oldest First")
+
+        expect(page.body.index("review-card-#{@review_11.id}")).to be >
+          page.body.index("review-card-#{@review_10.id}")
       end
     end
   end
