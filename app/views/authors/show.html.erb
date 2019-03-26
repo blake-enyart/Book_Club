@@ -12,7 +12,11 @@
     <p>Year Published: <%= book.year_published %></p>
     <br>
     <section id='author-top-review'>
-    <h2>Authors Top Review</h2>
+    <h2>Books Top Review</h2>
+
+    <p><%= book.top_review.title %></p>
+    <p><%= book.top_review.rating %></p>
+    <p><%= book.top_review.username %></p>
   </section>
   <% end %>
 </section>

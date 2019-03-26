@@ -76,6 +76,12 @@ RSpec.describe 'Author Show Page', type: :feature do
           expect(page).to have_content("Score: #{@book_1.top_review.rating}")
           expect(page).to have_xpath("Username: #{@book_1.top_review.username}']")
         end
+
+        within "#book-card-#{@book_2.id}" do
+          expect(page).to have_content("title: #{@book_2.top_review.title}")
+          expect(page).to have_content("Score: #{@book_2.top_review.rating}")
+          expect(page).to have_xpath("Username: #{@book_2.top_review.username}']")
+        end
       end
     end
   end
