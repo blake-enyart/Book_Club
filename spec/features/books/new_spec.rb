@@ -7,7 +7,7 @@ RSpec.describe "user sees all books", type: :feature do
 
       visit root_path
       within 'top-nav'
-      click_link 'New_Book'
+      click_link 'New Book'
 
 
       fill_in 'book[title]', with: 'Sphere'
