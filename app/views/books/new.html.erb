@@ -12,11 +12,11 @@
   <br>
   <br>
   <%= f.label :published %>
-  <%= f.text_field :year_published %>
+  <%= f.number_field :year_published %>
   <br>
   <br>
   <%= f.label :pages %>
-  <%= f.text_field :number_of_pages %>
+  <%= f.number_field :number_of_pages, min: 1 %>
   <br>
   <br>
   <%= f.label :image %>

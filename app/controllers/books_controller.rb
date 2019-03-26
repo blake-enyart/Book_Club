@@ -7,6 +7,9 @@ class BooksController < ApplicationController
   def create
     author_names = params[:authors].split(',')
     book = Book.new(book_params)
+    if book.book_cover_url == ''
+      book.book_cover_url = 'https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg'
+    end
     if book.save
       assign_book_to_author(author_names, book)
       redirect_to book_path(book[:id])
