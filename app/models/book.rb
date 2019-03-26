@@ -12,7 +12,7 @@ class Book < ApplicationRecord
   end
 
   def top_review
-    self.reviews.order(:rating).reverse.first(1)
+    self.reviews.order(:rating).reverse.first(1).pop
   end
 
   def top_three_reviews

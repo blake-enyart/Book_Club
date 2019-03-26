@@ -73,8 +73,8 @@ RSpec.describe 'Author Show Page', type: :feature do
 
         within "#book-card-#{@book_1.id}" do
           expect(page).to have_content("title: #{@book_1.top_review.title}")
-          expect(page).to have_content("Year Published: #{@book_1.year_published}")
-          expect(page).to have_xpath("//img[@src='#{@book_1.book_cover_url}']")
+          expect(page).to have_content("Score: #{@book_1.top_review.rating}")
+          expect(page).to have_xpath("Username: #{@book_1.top_review.username}']")
         end
       end
     end
