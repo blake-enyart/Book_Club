@@ -52,5 +52,12 @@ describe Review, type: :model do
 
       expect(actual).to eq(expected)
     end
+
+    it '.find_reviews' do
+      actual = Review.find_reviews('user_1')
+      expected = [@review_1, @review_2, @review_5, @review_6]
+
+      expect(actual).to eq(expected)
+    end
   end
 end
