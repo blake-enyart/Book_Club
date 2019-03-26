@@ -5,10 +5,11 @@ RSpec.describe 'Author Show Page', type: :feature do
     describe 'primary content on authors show page' do
       before :each do
         @author_1 = Author.create(name: "John Steinbeck")
+        @author_2 = Author.create(name: "Michael Jackson")
         @book_1 = Book.create(title: "East of Eden", number_of_pages: 608, year_published: 1952, book_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/56/EastOfEden.jpg")
         @book_2 = Book.create(title: "Cannery Row", number_of_pages: 208, year_published: 1945, book_cover_url: "https://images-na.ssl-images-amazon.com/images/I/41sK2DL-t7L._SX290_BO1,204,203,200_.jpg")
         @book_3 = Book.create(title: "The Grapes of Wrath", number_of_pages: 464, year_published: 1939, book_cover_url: "https://images-na.ssl-images-amazon.com/images/I/51zdzn8cO3L._SX323_BO1,204,203,200_.jpg")
-        @book_1.authors << @author_1
+        @book_1.authors = [@author_1, @author_2]
         @book_2.authors << @author_1
         @book_3.authors << @author_1
         @review_1 = @book_1.reviews.create(title: 'title_1', rating: 5, text: 'body_1', username: 'user_1')
@@ -34,6 +35,7 @@ RSpec.describe 'Author Show Page', type: :feature do
           expect(page).to have_link(@book_1.title)
           expect(page).to have_content("Number of Pages: #{@book_1.number_of_pages}")
           expect(page).to have_content("Year Published: #{@book_1.year_published}")
+          expect(page).to have_content("Co-Author: #{@book_1.authors[1].name}")
           expect(page).to have_xpath("//img[@src='#{@book_1.book_cover_url}']")
         end
 
