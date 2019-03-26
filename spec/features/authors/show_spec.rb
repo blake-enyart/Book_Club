@@ -43,6 +43,7 @@ RSpec.describe 'Author Show Page', type: :feature do
           expect(page).to have_link(@book_2.title)
           expect(page).to have_content("Number of Pages: #{@book_2.number_of_pages}")
           expect(page).to have_content("Year Published: #{@book_2.year_published}")
+          expect(page).not_to have_content("Co-Author:")
           expect(page).to have_xpath("//img[@src='#{@book_2.book_cover_url}']")
         end
 
