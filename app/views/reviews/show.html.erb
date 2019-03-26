@@ -1,6 +1,9 @@
 <section id="main">
   <% if @user_reviews[0].class != String %>
     <h1><%= @user_reviews.first.username %></h1>
+    <ul>
+      <%= link_to 'Newest First', user_path(@user_reviews.first.username, sort: :newest) %>
+    </ul>
     <section id="review-ctn">
       <% @user_reviews.each do |review| %>
       <section id="review-card-<%= review.id %>">
