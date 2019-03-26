@@ -27,8 +27,10 @@ header {
 }
 
 h1 {
+  margin-left: 1rem;
+  margin-top: 1rem;
   font-size: 2rem;
-  color: 	#0099ff;
+  color: 	#585858;
   font-family: 'Muli', sans-serif;
 }
 
