@@ -19,4 +19,8 @@ class Review < ApplicationRecord
     end
     review_count_array
   end
+
+  def self.find_reviews(user_name)
+    where(username: user_name).order(:created_at)
+  end
 end

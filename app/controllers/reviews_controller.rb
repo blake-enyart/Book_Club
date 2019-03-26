@@ -10,6 +10,10 @@ class ReviewsController < ApplicationController
     redirect_to book_path(book)
   end
 
+  def show
+    @user_reviews = Review.find_reviews(params[:username])
+  end
+
   private
 
   def review_params

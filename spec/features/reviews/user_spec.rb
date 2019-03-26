@@ -1,18 +1,7 @@
 require 'rails_helper'
 
-describe Review, type: :model do
-  describe "validations" do
-    it { should validate_presence_of :title }
-    it { should validate_presence_of :rating }
-    it { should validate_presence_of :text }
-    it { should validate_presence_of :username }
-  end
-
-  describe 'relationships' do
-    it { should belong_to :book }
-  end
-
-  describe 'Class Methods' do
+RSpec.describe "user sees book index page", type: :feature do
+  describe 'user visits /books' do
     before :each do
       @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
       @book_2 = Book.create(title: "East of Eden", number_of_pages: 608, year_published: 1952, book_cover_url: "https://upload.wikimedia.org/wikipedia/en/5/56/EastOfEden.jpg")
@@ -35,29 +24,42 @@ describe Review, type: :model do
       @review_7 = @book_2.reviews.create(title: 'title_7', rating: 3, text: 'body_7', username: 'user_2')
       @review_8 = @book_2.reviews.create(title: 'title_8', rating: 3, text: 'body_8', username: 'user_2')
 
-      @review_9 = @book_3.reviews.create(title: 'title_9', rating: 5, text: 'body_9', username: 'user_3')
+      @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
-      @review_10 = @book_4.reviews.create(title: 'title_10', rating: 1, text: 'body_10', username: 'user_4')
-      @review_11 = @book_4.reviews.create(title: 'title_11', rating: 1, text: 'body_11', username: 'user_4')
+      @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+      @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+
     end
 
-    it '.top_reviewers' do
-      actual = Review.top_reviewers(1)
-      expected = [['user_1', 4]]
+    it 'user clicks reviewer name and sees all reviews' do
+      visit books_path
 
-      expect(actual).to eq(expected)
+      within("#top-reviewers-ctn") do
+        click_link("user_1")
+      end
 
-      actual = Review.top_reviewers(3)
-      expected = [['user_1', 4],['user_2', 4],['user_4', 2]]
+      expect(current_path).to eq(user_path('user_1'))
 
-      expect(actual).to eq(expected)
-    end
+      within("#main") do
+        within("#review-card-#{@review_1.id}") do
+          expect(page).to have_content('Title: title_1')
+          expect(page).to have_content('Description: body_1')
+          expect(page).to have_content("Rating: #{@review_1.rating}")
+          expect(page).to have_content("Book: #{@review_1.book.title}")
+          expect(page).to have_content("Created At: #{@review_1.created_at}")
+        end
 
-    it '.find_reviews' do
-      actual = Review.find_reviews('user_1')
-      expected = [@review_1, @review_2, @review_5, @review_6]
+        within("#review-card-#{@review_2.id}") do
+          expect(page).to have_content("Title: #{@review_2.title}")
+          expect(page).to have_content("Description: #{@review_2.text}")
+          expect(page).to have_content("Rating: #{@review_2.rating}")
+          expect(page).to have_content("Book: #{@review_2.book.title}")
+          expect(page).to have_content("Created At: #{@review_2.created_at}")
+        end
 
-      expect(actual).to eq(expected)
+        expect(page).not_to have_content('Title: title_3')
+        expect(page).not_to have_content('Description: body_3')
+      end
     end
   end
 end

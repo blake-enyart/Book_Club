@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe "user sees book show page", type: :feature do
-  describe 'user visits /book/:id' do
+  describe 'user visits /books/:id' do
     it 'user adds new review' do
       book_1 = Book.create!(title: "Title_1", number_of_pages: 100, year_published: 1, book_cover_url: "book_cover_1")
 
