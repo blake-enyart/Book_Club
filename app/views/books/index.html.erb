@@ -4,17 +4,21 @@
   <section id="stats">
     <section id="top-books">
       <ul>
+        <br>
         <% @top_books.each do |book| %>
-        <li><%= book.title %></li>
+        <li><%= link_to book.title, book_path(book) %></li>
         <% end %>
+        <br>
       </ul>
     </section>
 
     <section id="btm-books">
       <ul>
+        <br>
         <% @bottom_books.each do |book| %>
-        <li><%= book.title %></li>
+        <li><%= link_to book.title, book_path(book) %></li>
         <% end %>
+        <br>
       </ul>
     </section>
 
