@@ -34,6 +34,14 @@ h1 {
   font-family: 'Muli', sans-serif;
 }
 
+h2 {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-size: 1.25rem;
+  color: 	#585858;
+  font-family: 'Muli', sans-serif;
+}
+
 /* #main {
   display: flex;
 } */
