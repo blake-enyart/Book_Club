@@ -1,9 +1,9 @@
 <%= link_to 'delete_book', book_path(@book), method: :delete %>
+<%= link_to 'Add Review', new_book_review_path(@book) %>
 
 <section class="main">
   <h1><%= @book.title %></h1>
   <section class='book-card' id=<%= @book.id %>>
-    <!-- <p><%= link_to @book.title, book_path(@book) %></p> -->
     <img src=<%= @book.book_cover_url %> alt="Book cover">
     <p>Number of Pages: <%= @book.number_of_pages %></p>
     <p>Author(s):
@@ -18,7 +18,7 @@
     <div class="review-description" %>
       <% @book.reviews.each do |review| %>
       <h1>Title: <%= review.title %></h1>
-      <p>Username: <%= review.username %></p>
+      <p>User Name: <%= review.username %></p>
       <p>Rating: <%= review.rating %></p>
       <div class='book-review-card'>
         <p>Description: <%= review.text %></p>
