@@ -6,6 +6,9 @@ class BooksController < ApplicationController
 
   def create
     author_names = params[:authors].split(',')
+    author_names = author_names.map do |author|
+      author.titleize
+    end
     book = Book.new(book_params)
     if book.save
       assign_book_to_author(author_names, book)
