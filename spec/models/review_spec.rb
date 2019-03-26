@@ -43,31 +43,45 @@ describe Review, type: :model do
 
     it '.top_reviewers' do
       actual = Review.top_reviewers(1)
-      expected = [['user_1', 4]]
+      expected = [['User 1', 4]]
 
       expect(actual).to eq(expected)
 
       actual = Review.top_reviewers(3)
-      expected = [['user_1', 4],['user_2', 4],['user_4', 2]]
+      expected = [['User 1', 4],['User 2', 4],['User 4', 2]]
 
       expect(actual).to eq(expected)
     end
 
     it '.find_reviews' do
-      actual = Review.find_reviews('user_1')
+      actual = Review.find_reviews('User 1')
       expected = [@review_1, @review_2, @review_5, @review_6]
 
       expect(actual).to eq(expected)
     end
 
     it '.sort_reviews' do
-      actual = Review.sort_reviews('user_1', 'newest')
+      actual = Review.sort_reviews('User 1', 'newest')
       expected = [@review_6, @review_5, @review_2, @review_1]
 
       expect(actual).to eq(expected)
 
-      actual = Review.sort_reviews('user_1', 'oldest')
+      actual = Review.sort_reviews('User 1', 'oldest')
       expected = [@review_1, @review_2, @review_5, @review_6]
+
+      expect(actual).to eq(expected)
+    end
+
+    it '.add_review' do
+      review_params = { title: 'title_1', rating: 5, text: 'body_1', username: 'user_1' }
+      actual = Review.add_review(@book_1, review_params)
+      expected = false
+
+      expect(actual).to eq(expected)
+
+      review_params = { title: 'title_1', rating: 5, text: 'body_1', username: 'user_8' }
+      actual = Review.add_review(@book_1, review_params)
+      expected = true
 
       expect(actual).to eq(expected)
     end

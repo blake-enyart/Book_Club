@@ -3,8 +3,10 @@
 <%= form_for [@book, @review] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
+
   <%= f.label :rating %>
-  <%= f.number_field :rating %>
+  <%= f.number_field :rating, min: 0, max: 5 %>
+
   <%= f.label :text %>
   <%= f.text_field :text %>
   <%= f.label :username %>

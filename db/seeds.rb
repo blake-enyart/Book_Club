@@ -44,7 +44,7 @@ review_list = CSV.new(file, headers: true, header_converters: :symbol).read
 review_list = review_list.map { |review| review.to_h }
 
 review_list.each do |review|
-  Book.where(title: review[:book_title])[0].reviews.create(title: review[:title],
+  Book.find_by(title: review[:book_title].titlecase).reviews.create(title: review[:title],
                                                            username: review[:user_name],
                                                            rating: review[:rating],
                                                            text: review[:text])

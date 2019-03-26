@@ -5,9 +5,13 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    book = Book.find(params[:book_id])
-    review = book.reviews.create(review_params)
-    redirect_to book_path(book)
+    if review_params[:rating].to_i < 5 && review_params[:rating].to_i > 0
+      book = Book.find(params[:book_id])
+      review = Review.add_review(book, review_params)
+      redirect_to book_path(book)
+    else
+      redirect_to new_book_review_path(params[:book_id])
+    end
   end
 
   def show
