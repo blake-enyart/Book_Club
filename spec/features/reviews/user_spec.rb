@@ -25,10 +25,10 @@ RSpec.describe "user sees book index page", type: :feature do
         @review_7 = @book_2.reviews.create(title: 'title_7', rating: 3, text: 'body_7', username: 'user_2')
         @review_8 = @book_2.reviews.create(title: 'title_8', rating: 3, text: 'body_8', username: 'user_2')
 
-        @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
+        @review_9 = @book_3.reviews.create(title: 'title_8', rating: 5, text: 'body_8', username: 'user_3')
 
-        @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
-        @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+        @review_10 = @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
+        @review_11 = @book_4.reviews.create(title: 'title_8', rating: 1, text: 'body_8', username: 'user_4')
 
       end
 
@@ -71,10 +71,7 @@ RSpec.describe "user sees book index page", type: :feature do
         end
 
         expect(current_path).to eq(user_path('user_1'))
-        expect(page).to have_content("Title: #{@review_1.title}")
-        expect(page).to have_content("Rating: #{@review_1.rating}")
-        expect(page).to have_content("Description: #{@review_1.text}")
-        expect(page).to have_content("Book: #{@review_1.book.title}")
+        expect(page).to have_css("#review-card-#{@review_1.id}")
 
         within("#review-card-#{@review_1.id}") do
           click_link("Delete Review")
@@ -82,10 +79,37 @@ RSpec.describe "user sees book index page", type: :feature do
 
         expect(current_path).to eq(user_path('user_1'))
 
-        expect(page).not_to have_content("Title: #{@review_1.title}")
-        expect(page).not_to have_content("Rating: #{@review_1.rating}")
-        expect(page).not_to have_content("Description: #{@review_1.description}")
-        expect(page).not_to have_content("Book: #{@review_1.book.title}")
+        expect(page).not_to have_css("#review-card-#{@review_1.id}")
+      end
+
+      it 'deletes last review by user' do
+        visit books_path
+
+        within("#top-reviewers-ctn") do
+          click_link("user_4")
+        end
+
+        expect(current_path).to eq(user_path('user_4'))
+        expect(page).to have_css("#review-card-#{@review_10.id}")
+
+        within("#review-card-#{@review_10.id}") do
+          click_link("Delete Review")
+        end
+
+        expect(current_path).to eq(user_path('user_4'))
+
+        expect(page).not_to have_css("#review-card-#{@review_10.id}")
+        expect(page).to have_content("user_4")
+
+        within("#review-card-#{@review_11.id}") do
+          click_link("Delete Review")
+        end
+
+        expect(current_path).to eq(user_path('user_4'))
+        
+        expect(page).not_to have_css("#review-card-#{@review_11.id}")
+        expect(page).to have_content("No reviews for this user")
+        expect(page).to have_content("user_4")
       end
     end
   end
