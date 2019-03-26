@@ -6,9 +6,6 @@ class BooksController < ApplicationController
 
   def create
     author_names = params[:authors].split(',')
-    author_names = author_names.map do |author|
-      author.titleize
-    end
     book = Book.new(book_params)
     if book.book_cover_url == ''
       book.book_cover_url = 'https://islandpress.org/sites/default/files/400px%20x%20600px-r01BookNotPictured.jpg'

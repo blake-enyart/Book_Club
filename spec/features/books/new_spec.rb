@@ -69,6 +69,31 @@ RSpec.describe "user sees all books", type: :feature do
       expect(new_book.book_cover_url).to eq('https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg')
       expect(new_book.authors[0].name).to eq('Michael Crichton')
     end
+
+    it 'user adds new book and the title is titleized' do
+
+      visit root_path
+      within 'top-nav'
+      click_link 'New Book'
+
+
+      fill_in 'book[title]', with: 'sphere'
+      fill_in 'book[year_published]', with: 1988
+      fill_in 'book[number_of_pages]', with: 345
+      fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
+      fill_in 'authors', with: 'michael crichton'
+
+      click_button 'Create Book'
+
+      new_book = Book.last
+
+      expect(current_path).to eq(book_path(new_book))
+      expect(new_book.title).to eq('Sphere')
+      expect(new_book.year_published).to eq(1988)
+      expect(new_book.book_cover_url).to eq('https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg')
+      expect(new_book.authors[0].name).to eq('Michael Crichton')
+    end
+
     it 'user adds new book and it can include multiple authors' do
 
       visit root_path
