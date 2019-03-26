@@ -6,6 +6,11 @@ RSpec.describe 'Delete author workflow' do
     before :each do
       @book_1 = Book.create(title: "Wherwdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
       @author_1 = @book_1.authors.create(name: "Dellkjlia Owens")
+      @review_1 = @book_1.reviews.create(title: 'title_1', rating: 5, text: 'body_1', username: 'user_1')
+      @review_2 = @book_1.reviews.create(title: 'title_2', rating: 4, text: 'body_2', username: 'user_1')
+      @review_3 = @book_1.reviews.create(title: 'title_3', rating: 3, text: 'body_3', username: 'user_2')
+      @review_4 = @book_1.reviews.create(title: 'title_4', rating: 3, text: 'body_4', username: 'user_2')
+
     end
 
       it 'deletes author correctly' do
