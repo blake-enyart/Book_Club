@@ -17,11 +17,13 @@
     </p>
     <div class="review-description" %>
       <% @book.reviews.each do |review| %>
+      <div id="review-description-<%= review.id %>">
       <h1>Title: <%= review.title %></h1>
-      <p>User Name: <%= review.username %></p>
+      <p>User Name: <%= link_to review.username, user_path(review.username) %></p>
       <p>Rating: <%= review.rating %></p>
-      <div class='book-review-card'>
-        <p>Description: <%= review.text %></p>
+        <div class='book-review-card'>
+          <p>Description: <%= review.text %></p>
+        </div>
       </div>
       <% end %>
     </div>
@@ -31,17 +33,21 @@
 <section id='statistics'>
   <div class="book-review-statistics-top" id=<%= @book.id %>>
     <% @top_three_reviews.each do |review| %>
-    <h1>Title: <%= review.title %></h1>
-    <p>Review Rating: <%= review.rating %></p>
-    <p>Username: <%= review.username %></p>
+    <div id="statistics-top-<%= review.id %>">
+      <h1>Title: <%= review.title %></h1>
+      <p>Review Rating: <%= review.rating %></p>
+      <p>User Name: <%= link_to review.username, user_path(review.username) %></p>
+    </div>
     <% end %>
   </div>
 
   <div class="book-review-statistics-bottom" id=<%= @book.id %>>
     <% @bottom_three_reviews.each do |review| %>
-    <h1>Title: <%= review.title %></h1>
-    <p>Review Rating: <%= review.rating %></p>
-    <p>Username: <%= review.username %></p>
+    <div id="statistics-bottom-<%= review.id %>">
+      <h1>Title: <%= review.title %></h1>
+      <p>Review Rating: <%= review.rating %></p>
+      <p>User Name: <%= link_to review.username, user_path(review.username) %></p>
+    </div>
     <% end %>
   </div>
 </section>
