@@ -28,4 +28,12 @@ class Review < ApplicationRecord
       user_name
     end
   end
+
+  def self.sort_reviews(user_name, sort_method)
+    if sort_method == 'newest'
+      where(username: user_name).order(created_at: :desc)
+    elsif sort_method == 'oldest'
+      where(username: user_name).order(created_at: :asc)
+    end
+  end
 end

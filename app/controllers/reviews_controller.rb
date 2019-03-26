@@ -12,6 +12,9 @@ class ReviewsController < ApplicationController
 
   def show
     @user_reviews = Review.find_reviews(params[:username])
+    if params[:sort] == 'newest'
+      @user_reviews = Review.sort_reviews(params[:username], params[:sort])
+    end
   end
 
   def destroy
