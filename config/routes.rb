@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   end
 
   resources :authors, only:[:index, :show, :destroy]
+
+  get '/reviews/:username', to: 'reviews#show', as: :user
 end
