@@ -12,6 +12,15 @@ Review.destroy_all
 Book.destroy_all
 Author.destroy_all
 
+file_path = './db/data/authors.csv'
+file = File.open(file_path)
+author_list = CSV.new(file, headers: true, header_converters: :symbol).read
+
+author_list = author_list.map { |author| author.to_h }
+#
+# author_list.each do |author|
+#   Authors.find_or_create_by(name: author[:name])
+# end
 
 file_path = './db/data/books.csv'
 file = File.open(file_path)
@@ -20,18 +29,12 @@ books_list = CSV.new(file, headers: true, header_converters: :symbol).read
 books_list = books_list.map { |book| book.to_h }
 
 books_list.each do |book|
-  Book.create(book)
-end
-
-file_path = './db/data/authors.csv'
-file = File.open(file_path)
-author_list = CSV.new(file, headers: true, header_converters: :symbol).read
-
-author_list = author_list.map { |author| author.to_h }
-
-author_list.each do |author|
-  #Book.find possibly
-  Book.where(title: author[:book_title])[0].authors.find_or_create_by(name: author[:name])
+  new_book = Book.create(book)
+  author_list.each do |author|
+    if author[:book_title] == new_book.title
+      new_book.authors << Author.find_or_create_by(name: author[:name])
+    end
+  end
 end
 
 file_path = './db/data/reviews.csv'
