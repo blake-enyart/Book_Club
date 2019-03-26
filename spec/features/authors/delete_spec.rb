@@ -2,9 +2,14 @@ require 'rails_helper'
 
 RSpec.describe 'Delete author workflow' do
   context 'as a visitor' do
-    it 'deletes author correctly' do
-      @book_1 = Book.create(title: "Where the Crawdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
-      @author_1 = @book_1.authors.create(name: "Delia Owens")
+
+    before :each do
+      @book_1 = Book.create(title: "Wherwdads Sing", number_of_pages: 384, year_published: 2018, book_cover_url: "https://prodimage.images-bn.com/pimages/9780735219090_p0_v10_s550x406.jpg")
+      @author_1 = @book_1.authors.create(name: "Dellkjlia Owens")
+    end
+
+      it 'deletes author correctly' do
+
       visit author_path(@author_1)
       within 'body'
 
