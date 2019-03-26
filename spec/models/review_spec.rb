@@ -59,5 +59,17 @@ describe Review, type: :model do
 
       expect(actual).to eq(expected)
     end
+
+    it '.sort_reviews' do
+      actual = Review.sort_reviews('user_1', 'newest')
+      expected = [@review_6, @review_5, @review_2, @review_1]
+
+      expect(actual).to eq(expected)
+
+      actual = Review.sort_reviews('user_1', 'oldest')
+      expected = [@review_1, @review_2, @review_5, @review_6]
+
+      expect(actual).to eq(expected)
+    end
   end
 end
