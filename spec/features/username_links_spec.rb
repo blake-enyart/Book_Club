@@ -28,13 +28,11 @@ RSpec.describe 'username links' do
 
         visit book_path(@book_1)
 
-        within("#statistics") do
-          within ".book-review-statistics-top" do
-            within("#statistics-top-#{@review_2.id}") do
-              click_link "User 1"
+        within ".book-review-statistics-top" do
+          within("#statistics-top-#{@review_2.id}") do
+            click_link "User 1"
 
-              expect(current_path).to eq(user_path('User 1'))
-            end
+            expect(current_path).to eq(user_path('User 1'))
           end
         end
 
