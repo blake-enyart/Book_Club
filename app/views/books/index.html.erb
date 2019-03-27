@@ -1,38 +1,56 @@
+
 <section id='main'>
   <h1>Book Statistics</h1>
   <section id="stats">
     <section id="top-book-ctn">
-      <h3>Top Books</h3>
+      <h2>Top Books</h2>
+      <br>
+      <br>
       <% @top_books.each do |book| %>
       <section id="top-book-card-<%= book.id %>">
-        <p><%= link_to book.title, book_path(book) %></p>
+        <h3><%= link_to book.title, book_path(book) %></p>
+        <br>
         <p>Average Rating: <%= book.average_review.round(2) %></p>
+        <br>
       </section>
       <% end %>
     </section>
 
     <section id="btm-book-ctn">
-      <h3>Worst Books</h3>
+      <h2>Worst Books</h2>
+      <br>
+      <br>
       <% @bottom_books.each do |book| %>
       <section id="btm-book-card-<%= book.id %>">
-        <p><%= link_to book.title, book_path(book) %></p>
+        <h3><%= link_to book.title, book_path(book) %></p>
+        <br>
         <p>Average Rating: <%= book.average_review.round(2) %></p>
+        <br>
       </section>
       <% end %>
     </section>
 
     <section id="top-reviewers-ctn">
-      <h3>Top Reviews</h3>
+      <h2>Top Reviews</h2>
+      <br>
       <br>
       <% @top_reviewers.each_with_index do |reviewer, idx| %>
       <article class="top-reviewer-<%= idx %>">
-        <p>User Name: <%= link_to reviewer[0], user_path(reviewer[0]) %></p>
+        <h3>User Name: <%= link_to reviewer[0], user_path(reviewer[0]) %></p>
+        <br>
         <p>Review Count: <%= reviewer[1] %></p>
+        <br>
       </article>
       <% end %>
     </section>
   </section>
-
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <br>
+      <br>
   <section id="sort-methods">
     <ul>
       <%= link_to 'Highest Average Rating', books_path(sort:['avg_review','DESC']) %>
@@ -48,10 +66,14 @@
   <section class='book-ctn'>
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">
-      <h2><%= link_to book.title, book_path(book) %></h2>
-      <p>Average Book Rating: <%= book.average_review.round(2) if book.average_review %></p>
-      <p>Total Reviews: <%= book.reviews.count %></p>
+      <h1><%= link_to book.title, book_path(book) %></h1>
+      <br>
       <img src="<%= book.book_cover_url %>" alt="book cover image">
+      <br>
+      <br>
+      <h3>Average Book Rating: <%= book.average_review.round(2) if book.average_review %></p>
+      <br>
+      <p>Total Reviews: <%= book.reviews.count %></p>
       <p>Number of Pages: <%= book.number_of_pages %></p>
       <p>Author(s):
       <% book.authors.each do |author| %>
@@ -59,6 +81,8 @@
       <% end %>
       </p>
       <p>Year Published: <%= book.year_published %></p>
+      <br>
+      <br>
     </section>
     <% end %>
   </section>

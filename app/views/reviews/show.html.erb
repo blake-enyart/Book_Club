@@ -2,19 +2,26 @@
   <% if @user_reviews[0].class != String %>
     <h1><%= @user_reviews.first.username %></h1>
     <ul>
-      <%= link_to 'Newest First', user_path(@user_reviews.first.username, sort: :newest) %>
-      <%= link_to 'Oldest First', user_path(@user_reviews.first.username, sort: :oldest) %>
+      <p><%= link_to 'Newest First', user_path(@user_reviews.first.username, sort: :newest) %></p>
+      <p><%= link_to 'Oldest First', user_path(@user_reviews.first.username, sort: :oldest) %></p>
     </ul>
     <section id="review-ctn">
       <% @user_reviews.each do |review| %>
-      <section id="review-card-<%= review.id %>">
-        <h3>Title: <%= review.title %></h3>
-        <p>Rating: <%= review.rating %></p>
-        <p>Created At: <%= review.created_at %></p>
-        <p>Description: <%= review.text %></p>
-        <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
-        <img src="<%= review.book.book_cover_url %>" alt="book cover">
-        <%= link_to 'Delete Review', book_review_path(review.book, review), method: :delete %>
+      <section id="review-card">
+        <section id="review-card-<%= review.id %>">
+          <p>Created At: <%= review.created_at %></p>
+          <h1>Title: <%= review.title %></h1>
+          <h2>Rating: <%= review.rating %></p>
+            <br>
+          <p>Description: <%= review.text %></p>
+          <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
+          <br>
+          <img src="<%= review.book.book_cover_url %>" alt="book cover">
+          <br>
+          <br>
+          <p><%= link_to 'Delete Review', book_review_path(review.book, review), method: :delete %></p>
+          <br>
+        </section>
       </section>
       <% end %>
     </section>

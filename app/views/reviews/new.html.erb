@@ -1,15 +1,22 @@
 <h1>Create a New Review</h1>
 
+<div class="form-field">
 <%= form_for [@book, @review] do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title %>
-
+  <br>
+  <br>
   <%= f.label :rating %>
   <%= f.number_field :rating, min: 0, max: 5 %>
-
+  <br>
+  <br>
   <%= f.label :text %>
   <%= f.text_field :text %>
+  <br>
+  <br>
   <%= f.label :username %>
   <%= f.text_field :username %>
-  <%= f.submit %>
+  <br>
+  <br>
+  <%= f.button class: 'submit-class' %>
 <% end %>

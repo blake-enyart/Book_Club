@@ -16,7 +16,7 @@ RSpec.describe "user sees all books", type: :feature do
       #add test to add multiple authors
       fill_in 'authors', with: 'Michael Crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -38,7 +38,7 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
       fill_in 'authors', with: 'Michael Crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -59,7 +59,7 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
       fill_in 'authors', with: 'michael crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -83,7 +83,7 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'book[book_cover_url]', with: 'https://upload.wikimedia.org/wikipedia/en/b/b8/Big-sphere.jpg'
       fill_in 'authors', with: 'michael crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -108,7 +108,7 @@ RSpec.describe "user sees all books", type: :feature do
       #add test to add multiple authors
       fill_in 'authors', with: 'michael crichton, Jeremiah Tungsten'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -132,7 +132,7 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'book[number_of_pages]', with: 345
       fill_in 'authors', with: 'michael crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
@@ -155,7 +155,7 @@ RSpec.describe "user sees all books", type: :feature do
       fill_in 'book[number_of_pages]', with: 345
       fill_in 'authors', with: 'michael crichton'
 
-      click_button 'Create Book'
+      click_button("Create")
 
       new_book = Book.last
 
