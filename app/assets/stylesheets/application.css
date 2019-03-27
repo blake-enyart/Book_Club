@@ -50,7 +50,7 @@ h2 {
   padding-top: 40px;
   flex-direction: row;
   justify-content: space-around;
-  width: 40%;
+  width: 60%;
 }
 
 .top-nav a {
@@ -68,6 +68,64 @@ h2 {
   font-family: 'Lobster';
   color: #909090;
   font-size: 3rem;
-  width: 20%;
-  top-margin: 0px;
+  width: 30%;
+  margin-top: 15px;
+}
+
+.form-field {
+  width: 80%
+  margin: 0 auto;
+  margin-left:  5rem;
+}
+
+form {
+    width: 80%;
+    margin: 0 auto;
+}
+
+label, input {
+    /* in order to define widths */
+    display: inline-block;
+}
+
+label {
+    font-size: 1.25rem;
+    color: 	#585858;
+    font-family: 'Muli', sans-serif;
+    width: 30%;
+    /* positions the label text beside the input */
+    text-align: right;
+}
+
+label + input {
+    width: 23%;
+    /* large margin-right to force the next element to the new-line
+       and margin-left to create a gutter between the label and input */
+    margin: 0 30% 0 4%;
+}
+
+/* only the submit button is matched by this selector,
+   but to be sure you could use an id or class for that button */
+input + input {
+    float: right;
+}
+
+.form-title {
+  margin-left: 40%;
+  margin-right: 40%;
+}
+
+.submit-class-here {
+  font-size: 1rem;
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;
+  margin-left:  25%;
+  width: 15rem;
+  margin-left: 35%;
+  margin-right: 40%;
 }

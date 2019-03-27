@@ -1,13 +1,15 @@
-
+<div class="form-title">
 <h1>New Book Form</h1>
-
+</div>
+<br>
+<br>
 <% @book.errors.full_messages.each do |msg| %>
 <%= msg %>
 <% end %>
 
-
+<div class="form-field">
 <%= form_for @book do |f| %>
-  <p><%= f.label :title %></p>
+  <%= f.label :title %>
   <%= f.text_field :title %>
   <br>
   <br>
@@ -23,9 +25,10 @@
   <%= f.text_field :book_cover_url %>
   <br>
   <br>
-  <%= label_tag :authors %><br />
- <%= text_field_tag :authors %><br />
+  <%= label_tag :authors %>
+  <%= text_field_tag :authors %><br />
   <br>
   <br>
-  <%= f.submit %>
+  <%= f.submit 'button', :class => 'submit-class-here'%>
 <% end %>
+</div>

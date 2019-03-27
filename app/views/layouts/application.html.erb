@@ -8,6 +8,7 @@
     <%= javascript_include_tag 'application' %>
   </head>
 
+  <div class="title">Book Club</div>
   <body>
     <header>
       <ul class="top-nav">
@@ -15,7 +16,6 @@
         <%= link_to 'Books', books_path %>
         <%= link_to 'New Book', new_book_path %>
       </ul>
-      <div class="title">Book Club</div>
     </header>
 
     <%= yield %>
