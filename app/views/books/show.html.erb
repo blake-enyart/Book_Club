@@ -17,7 +17,7 @@
     </p>
 
     <div class="review-description" %>
-      <h2>Author's Reviews</h2>
+      <h2>Book's Reviews</h2>
       <% @book.reviews.each do |review| %>
       <br>
       <div id="review-description-<%= review.id %>">
@@ -34,7 +34,7 @@
 </section>
 
 <section id='statistics'>
-  <h2>Author's Top Reviews</h2>
+  <h2>Book's Top Reviews</h2>
   <div class="book-review-statistics-top" id=<%= @book.id %>>
     <% @top_three_reviews.each do |review| %>
     <br>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="book-review-statistics-bottom" id=<%= @book.id %>>
-    <h2>Author's Bottom Reviews</h2>
+    <h2>Book's Bottom Reviews</h2>
     <% @bottom_three_reviews.each do |review| %>
     <br>
     <div id="statistics-bottom-<%= review.id %>">
