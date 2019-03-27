@@ -77,12 +77,6 @@ a:active {
   color: #336600;
 }
 
-
-/* #main {
-  display: flex;
-} */
-
-
 form {
     width: 80%;
     margin: 0 auto;
@@ -194,8 +188,6 @@ input + input {
   margin-right: 15%;
 }
 
-
-
 #stats {
   display: flex;
   flex-wrap: wrap;
@@ -245,8 +237,6 @@ input + input {
   background-color: #E0E0E0;
   text-align: center;
   border:1px solid #021a40;
-
-
 }
 
 #sort-methods {
@@ -263,7 +253,6 @@ input + input {
   flex-wrap: wrap;
   height: 400px;
   justify-content: center;
-
 }
 
 .book-review-statistics-top {
@@ -278,7 +267,6 @@ input + input {
   background-color: #E0E0E0;
   text-align: center;
   border:1px solid #021a40;
-
 }
 
 .book-review-statistics-bottom {
@@ -293,7 +281,6 @@ input + input {
   background-color: #E0E0E0;
   text-align: center;
   border:1px solid #021a40;
-
 }
 
 #review-ctn {
@@ -315,13 +302,12 @@ input + input {
   background-color: #E0E0E0;
   text-align: center;
   border:1px solid #021a40;
-
 }
 
 .front-page {
   background-size: contain;
-
 }
+
 .front-page img {
   object-fit: cover;
 }
