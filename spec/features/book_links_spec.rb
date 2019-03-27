@@ -25,7 +25,7 @@ RSpec.describe 'Book links' do
 
         visit books_path
 
-        within('#btm-books') do
+        within('#btm-book-ctn') do
           click_link "Wheadas"
 
           expect(current_path).to eq(book_path(@book_1))
@@ -33,7 +33,7 @@ RSpec.describe 'Book links' do
 
         visit books_path
 
-        within('#top-books') do
+        within('#top-book-ctn') do
           click_link "Wheadas"
 
           expect(current_path).to eq(book_path(@book_1))

@@ -31,7 +31,7 @@ books_list = books_list.map { |book| book.to_h }
 books_list.each do |book|
   new_book = Book.create(book)
   author_list.each do |author|
-    if author[:book_title] == new_book.title
+    if author[:book_title].titlecase == new_book.title
       new_book.authors << Author.find_or_create_by(name: author[:name])
     end
   end
