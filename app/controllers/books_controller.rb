@@ -29,8 +29,19 @@ class BooksController < ApplicationController
     @top_books = Book.top_books(3)
     @bottom_books = Book.bottom_books(3)
     @top_reviewers = Review.top_reviewers(3)
-    if params[:sort]
-      @books = Book.sort_by(params[:sort])
+
+    if params[:sort] == ['avg_review','DESC']
+      @books = Book.sort_by(['AVG(reviews.rating)','DESC'])
+    elsif params[:sort] == ['avg_review','ASC']
+      @books = Book.sort_by(['AVG(reviews.rating)','ASC'])
+    elsif params[:sort] == ['pages','DESC']
+      @books = Book.sort_by(['books.number_of_pages','DESC'])
+    elsif params[:sort] == ['pages','ASC']
+      @books = Book.sort_by(['books.number_of_pages','ASC'])
+    elsif params[:sort] == ['reviews','DESC']
+      @books = Book.sort_by(['COUNT(reviews.id)','DESC'])
+    elsif params[:sort] == ['reviews','ASC']
+      @books = Book.sort_by(['COUNT(reviews.id)','ASC'])
     else
       @books = Book.all
     end

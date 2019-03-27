@@ -1,28 +1,24 @@
 <section id='main'>
   <h1>Book Statistics</h1>
   <section id="stats">
-    <section id="top-books">
+    <section id="top-book-ctn">
       <h3>Top Books</h3>
-      <ul>
-        <br>
-        <% @top_books.each do |book| %>
-        <li><%= link_to book.title, book_path(book) %></li>
-        <li>Average Rating: <%= book.average_review.round(2) %></li>
-        <% end %>
-        <br>
-      </ul>
+      <% @top_books.each do |book| %>
+      <section id="top-book-card-<%= book.id %>">
+        <p><%= link_to book.title, book_path(book) %></p>
+        <p>Average Rating: <%= book.average_review.round(2) %></p>
+      </section>
+      <% end %>
     </section>
 
-    <section id="btm-books">
+    <section id="btm-book-ctn">
       <h3>Worst Books</h3>
-      <ul>
-        <br>
-        <% @bottom_books.each do |book| %>
-        <li><%= link_to book.title, book_path(book) %></li>
-        <li>Average Rating: <%= book.average_review.round(2) %></li>
-        <% end %>
-        <br>
-      </ul>
+      <% @bottom_books.each do |book| %>
+      <section id="btm-book-card-<%= book.id %>">
+        <p><%= link_to book.title, book_path(book) %></p>
+        <p>Average Rating: <%= book.average_review.round(2) %></p>
+      </section>
+      <% end %>
     </section>
 
     <section id="top-reviewers-ctn">
@@ -39,12 +35,12 @@
 
   <section id="sort-methods">
     <ul>
-      <%= link_to 'Highest Average Rating', books_path(sort:['AVG(reviews.rating)','DESC']) %>
-      <%= link_to 'Lowest Average Rating', books_path(sort:['AVG(reviews.rating)','ASC']) %>
-      <%= link_to 'Highest Number of Pages', books_path(sort:['books.number_of_pages','DESC']) %>
-      <%= link_to 'Lowest Number of Pages', books_path(sort:['books.number_of_pages','ASC']) %>
-      <%= link_to 'Highest Number of Reviews', books_path(sort:['COUNT(reviews.id)','DESC']) %>
-      <%= link_to 'Lowest Number of Reviews', books_path(sort:['COUNT(reviews.id)','ASC']) %>
+      <%= link_to 'Highest Average Rating', books_path(sort:['avg_review','DESC']) %>
+      <%= link_to 'Lowest Average Rating', books_path(sort:['avg_review','ASC']) %>
+      <%= link_to 'Highest Number of Pages', books_path(sort:['pages','DESC']) %>
+      <%= link_to 'Lowest Number of Pages', books_path(sort:['pages','ASC']) %>
+      <%= link_to 'Highest Number of Reviews', books_path(sort:['reviews','DESC']) %>
+      <%= link_to 'Lowest Number of Reviews', books_path(sort:['reviews','ASC']) %>
     </ul>
   </section>
 
@@ -53,7 +49,7 @@
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">
       <h2><%= link_to book.title, book_path(book) %></h2>
-      <p>Average Book Rating: <%= book.average_review.round(2) %></p>
+      <p>Average Book Rating: <%= book.average_review.round(2) if book.average_review %></p>
       <p>Total Reviews: <%= book.reviews.count %></p>
       <img src="<%= book.book_cover_url %>" alt="book cover image">
       <p>Number of Pages: <%= book.number_of_pages %></p>
