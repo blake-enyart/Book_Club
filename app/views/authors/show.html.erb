@@ -14,7 +14,7 @@
     <p>Co-Author(s):
       <% book.authors.each do |author| %>
         <% if author.name != @author.name %>
-          <%= author.name %>
+          <%= link_to(author.name, author_path(author)) %>
         <% end %>
       <% end %>
     <% end %>
