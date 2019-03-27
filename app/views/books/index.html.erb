@@ -2,26 +2,32 @@
   <h1>Book Statistics</h1>
   <section id="stats">
     <section id="top-books">
+      <h3>Top Books</h3>
       <ul>
         <br>
         <% @top_books.each do |book| %>
         <li><%= link_to book.title, book_path(book) %></li>
+        <li>Average Rating: <%= book.average_review.round(2) %></li>
         <% end %>
         <br>
       </ul>
     </section>
 
     <section id="btm-books">
+      <h3>Worst Books</h3>
       <ul>
         <br>
         <% @bottom_books.each do |book| %>
         <li><%= link_to book.title, book_path(book) %></li>
+        <li>Average Rating: <%= book.average_review.round(2) %></li>
         <% end %>
         <br>
       </ul>
     </section>
 
     <section id="top-reviewers-ctn">
+      <h3>Top Reviews</h3>
+      <br>
       <% @top_reviewers.each_with_index do |reviewer, idx| %>
       <article class="top-reviewer-<%= idx %>">
         <p>User Name: <%= link_to reviewer[0], user_path(reviewer[0]) %></p>
@@ -47,7 +53,7 @@
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">
       <h2><%= link_to book.title, book_path(book) %></h2>
-      <p>Average Book Rating: <%= book.average_review %></p>
+      <p>Average Book Rating: <%= book.average_review.round(2) %></p>
       <p>Total Reviews: <%= book.reviews.count %></p>
       <img src="<%= book.book_cover_url %>" alt="book cover image">
       <p>Number of Pages: <%= book.number_of_pages %></p>
