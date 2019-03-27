@@ -15,6 +15,7 @@
             <br>
           <p>Description: <%= review.text %></p>
           <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
+          <br>
           <img src="<%= review.book.book_cover_url %>" alt="book cover">
           <br>
           <br>

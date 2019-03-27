@@ -317,3 +317,11 @@ input + input {
   border:1px solid #021a40;
 
 }
+
+.front-page {
+  background-size: contain;
+
+}
+.front-page img {
+  object-fit: cover;
+}
