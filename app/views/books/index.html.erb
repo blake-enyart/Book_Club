@@ -1,3 +1,4 @@
+
 <section id='main'>
   <h1>Book Statistics</h1>
   <section id="stats">
@@ -48,10 +49,11 @@
   <section class='book-ctn'>
     <% @books.each do |book| %>
     <section class='book-card' id="book-card-<%= book.id %>">
-      <h2><%= link_to book.title, book_path(book) %></h2>
+      <h1><%= link_to book.title, book_path(book) %></h1>
+      <br>
+      <img src="<%= book.book_cover_url %>" alt="book cover image">
       <p>Average Book Rating: <%= book.average_review.round(2) if book.average_review %></p>
       <p>Total Reviews: <%= book.reviews.count %></p>
-      <img src="<%= book.book_cover_url %>" alt="book cover image">
       <p>Number of Pages: <%= book.number_of_pages %></p>
       <p>Author(s):
       <% book.authors.each do |author| %>
@@ -59,6 +61,8 @@
       <% end %>
       </p>
       <p>Year Published: <%= book.year_published %></p>
+      <br>
+      <br>
     </section>
     <% end %>
   </section>

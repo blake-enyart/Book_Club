@@ -32,15 +32,54 @@ h1 {
   font-size: 2rem;
   color: 	#585858;
   font-family: 'Muli', sans-serif;
+  text-decoration: none;
 }
 
 h2 {
   margin-left: 1rem;
   margin-top: 1rem;
+  font-size: 1.75rem;
+  color: 	#585858;
+  font-family: 'Muli', sans-serif;
+  text-decoration: none;
+}
+
+h3 {
+  margin-left: 1rem;
+  margin-top: 1rem;
+  font-size: 1.45rem;
+  color: 	#585858;
+  font-family: 'Muli', sans-serif;
+  text-decoration: none;
+}
+
+p   {
   font-size: 1.25rem;
   color: 	#585858;
   font-family: 'Muli', sans-serif;
+  text-decoration: none;
 }
+
+a:visited {
+  text-decoration: none;
+  color:  #505050;
+}
+
+a:hover {
+  text-decoration: none;
+  color:  blue;
+}
+
+a:focus {
+  text-decoration: none;
+  color:  yellow;
+}
+
+a:hover, a:active {
+  text-decoration: none;
+  color: #336600;
+}
+
 
 /* #main {
   display: flex;
@@ -129,4 +168,36 @@ input + input {
   width: 80%;
   margin: 0 auto;
   margin-left:  5rem;
+}
+
+.book-ctn {
+  display: flex;
+  flex-wrap: wrap;
+  height: 400px;
+}
+
+.book-card {
+  transition: 0.3s;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  padding: 2px 16px;
+  width: 20%;
+  margin-left: 25px;
+  margin-right: 25px;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  background-color: #E0E0E0;
+  text-align: center;
+}
+
+.book-card img {
+  max-width: 200px;
+  object-fit: cover;
+  margin-left: 15%;
+  margin-right: 15%;
+}
+
+
+
+#stats {
+margin-bottom: 10%;
 }

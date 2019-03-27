@@ -4,6 +4,8 @@
 <section class="main">
   <h1><%= @book.title %></h1>
   <section class='book-card' id=<%= @book.id %>>
+    <br>
+    <br>
     <img src=<%= @book.book_cover_url %> alt="Book cover">
     <p>Number of Pages: <%= @book.number_of_pages %></p>
     <p>Author(s):
@@ -28,6 +30,8 @@
           <p>Description: <%= review.text %></p>
         </div>
       </div>
+      <br>
+      <br>
       <% end %>
     </div>
   </section>

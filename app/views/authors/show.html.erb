@@ -1,31 +1,39 @@
 <%= link_to 'delete_author', author_path(@author), method: :delete %>
 
 <section class="main">
-  <h1><%= @author.name %></h1>
-  <br>
-  <% @books.each do |book| %>
-  <h1><% book.title %></h1>
-  <section class='book-card' id="book-card-<%= book.id %>">
-    <img src="<%= book.book_cover_url %>" alt="book cover image">
-    <p><%= link_to book.title, book_path(book) %></p>
-    <p>Number of Pages: <%= book.number_of_pages %></p>
-    <p>Year Published: <%= book.year_published %></p>
-    <% if book.authors.count > 1 %>
-    <p>Co-Author(s):
-      <% book.authors.each do |author| %>
-        <% if author.name != @author.name %>
-          <%= link_to(author.name, author_path(author)) %>
-        <% end %>
-      <% end %>
-    <% end %>
-    </p>
+    <h1><%= @author.name %></h1>
     <br>
-    <section id='author-top-review'>
-    <h2>Book's Top Review</h2>
-    <p>Title: <%= book.top_review.title %></p>
-    <p>Score: <%= book.top_review.rating %></p>
-    <p>Username: <%= link_to book.top_review.username, user_path(book.top_review.username) %></p>
-    </section>
-  <% end %>
+    <section class='book-ctn'>
+    <% @books.each do |book| %>
+      <section class='book-card' id="book-card-<%= book.id %>">
+        <br>
+        <h1><% book.title %></h1>
+        <img src="<%= book.book_cover_url %>" alt="book cover image">
+        <br>
+        <br>
+        <br>
+        <p><%= link_to book.title, book_path(book) %></p>
+        <p>Number of Pages: <%= book.number_of_pages %></p>
+        <p>Year Published: <%= book.year_published %></p>
+        <% if book.authors.count > 1 %>
+        <p>Co-Author(s):
+          <% book.authors.each do |author| %>
+            <% if author.name != @author.name %>
+              <%= link_to(author.name, author_path(author)) %>
+            <% end %>
+          <% end %>
+        <% end %>
+        </p>
+        <br>
+        <section id='author-top-review'>
+        <h2>Book's Top Review</h2>
+        <p>Title: <%= book.top_review.title %></p>
+        <p>Score: <%= book.top_review.rating %></p>
+        <p>Username: <%= link_to book.top_review.username, user_path(book.top_review.username) %></p>
+        <br>
+        <br>
+        </section>
+      </section>
+    <% end %>
   </section>
 </section>
